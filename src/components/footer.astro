@@ -1,0 +1,248 @@
+---
+// Footer.astro
+import { ArrowUp, Heart, Coffee, Code, Sparkles, Github, Linkedin, Mail } from "lucide-react";
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com/sufyan2618", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/sufyanliaqat2", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:sufyan.li2618@gmail.com", label: "Email" }
+];
+
+const quickLinks = [
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" }
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bg-black/40 backdrop-blur-xl border-t border-white/10 overflow-hidden">
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/10 via-teal-900/10 to-emerald-900/10 animate-gradient-shift"></div>
+  
+  <div class="container mx-auto max-w-7xl relative z-10 px-6 py-12">
+    <div class="footer-content" data-animate>
+      
+      <!-- Main Footer Content -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        
+        <!-- Brand Section -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/20">
+              <Code class="w-6 h-6 text-white" />
+            </div>
+            <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
+              Sufyan Liaqat
+            </span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Full-Stack Developer crafting exceptional digital experiences with modern technologies. 
+            Building the future, one line of code at a time.
+          </p>
+          <div class="flex items-center gap-2 text-emerald-400 text-sm">
+            <Sparkles class="w-4 h-4 animate-pulse" />
+            <span>Available for new opportunities</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <div class="w-1 h-5 bg-gradient-to-b from-emerald-600 to-teal-600 rounded-full"></div>
+            Quick Links
+          </h3>
+          <ul class="space-y-3">
+            {quickLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-400 hover:text-emerald-400 transition-all duration-300 text-sm flex items-center gap-2 group"
+                >
+                  <span class="w-0 h-0.5 bg-emerald-500 group-hover:w-4 transition-all duration-300 rounded-full"></span>
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Connect Section -->
+        <div>
+          <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+            <div class="w-1 h-5 bg-gradient-to-b from-teal-600 to-emerald-600 rounded-full"></div>
+            Connect
+          </h3>
+          <div class="flex gap-3 mb-4">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg hover:border-emerald-600 hover:bg-emerald-600/20 transition-all duration-300 hover:scale-110 hover:-rotate-6"
+                  aria-label={social.label}
+                >
+                  <Icon class="w-5 h-5 text-gray-400 hover:text-emerald-400 transition-colors duration-300" />
+                </a>
+              );
+            })}
+          </div>
+          <p class="text-gray-400 text-sm">
+            Let's collaborate on something amazing!
+          </p>
+        </div>
+      </div>
+
+      <!-- Divider with gradient -->
+      <div class="relative my-8">
+        <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-black/40 backdrop-blur-xl">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+            <div class="w-2 h-2 rounded-full bg-teal-500 animate-pulse delay-150"></div>
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse delay-300"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Copyright -->
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span>&copy; {currentYear}</span>
+          <span class="text-emerald-500">•</span>
+          <span>Sufyan Liaqat</span>
+          <span class="text-teal-500">•</span>
+          <span>All rights reserved</span>
+        </div>
+
+        <!-- Made with love -->
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span>Crafted with</span>
+          <Heart class="w-4 h-4 text-red-400 animate-pulse" />
+          <span>and</span>
+          <Coffee class="w-4 h-4 text-amber-400" />
+          <span>in Lahore</span>
+        </div>
+
+        <!-- Back to Top -->
+        <button
+          id="back-to-top"
+          class="group p-3 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:shadow-lg hover:shadow-emerald-500/40 hover:scale-110 transition-all duration-300"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={18} class="transform transition-transform duration-300 group-hover:-translate-y-1" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated bottom accent -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 animate-gradient-x"></div>
+</footer>
+
+<style>
+  /* Gradient shift animation */
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  /* Gradient X animation for bottom accent */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 100%;
+    animation: gradient-x 3s ease infinite;
+  }
+
+  /* Pulse animation delays */
+  .delay-150 {
+    animation-delay: 150ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  /* Fade-in animation for scroll trigger */
+  .footer-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .footer-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fix for bg-gradient-to-r (if not in Tailwind config) */
+  .bg-linear-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  }
+</style>
+
+<script>
+  // Scroll to top functionality
+  const backToTopBtn = document.getElementById('back-to-top');
+  
+  backToTopBtn?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Intersection Observer for scroll animation (replaces framer-motion whileInView)
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  // Observe footer content
+  const footerContent = document.querySelector('[data-animate]');
+  if (footerContent) {
+    observer.observe(footerContent);
+  }
+</script>

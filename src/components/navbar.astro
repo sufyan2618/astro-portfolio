@@ -1,0 +1,301 @@
+---
+// Navbar.astro
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent"
+>
+  <div
+    class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative"
+  >
+    <!-- Logo -->
+    <button
+      id="logo-btn"
+      class="group flex items-center space-x-3 z-10 cursor-pointer"
+      data-href="#hero"
+    >
+      <div class="relative w-10 h-10">
+        <div
+          class="relative w-full h-full rounded-full border-2 border-white/10 group-hover:border-emerald-500 transition-all duration-300 overflow-hidden"
+        >
+          <img
+            src="/logo.webp"
+            class="w-full h-full object-cover"
+            alt="Logo"
+          />
+        </div>
+      </div>
+      <div class="relative">
+        <span
+          class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"
+        >
+          Sufyan
+        </span>
+        <span
+          class="text-lg text-gray-400 ml-2 group-hover:text-emerald-400 transition-colors duration-300 hidden sm:inline"
+        >
+          Portfolio
+        </span>
+      </div>
+    </button>
+
+    <!-- Desktop Navigation -->
+    <div
+      class="hidden md:flex items-center space-x-1 bg-white/5 backdrop-blur-md rounded-full px-2 py-1.5 border border-white/10"
+    >
+      {
+        navItems.map((item) => (
+          <button
+            data-href={item.href}
+            data-name={item.name}
+            class="nav-item relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-gray-400 hover:text-white"
+          >
+            <span class="relative z-10">{item.name}</span>
+          </button>
+        ))
+      }
+      <div
+        id="active-indicator"
+        class="absolute bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full transition-all duration-300 pointer-events-none opacity-0"
+      ></div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-emerald-400 hover:border-emerald-600 transition-all duration-300 z-50"
+      aria-label="Toggle Menu"
+    >
+      <Menu id="menu-icon" size={24} />
+      <X id="close-icon" size={24} class="hidden" />
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 md:hidden bg-black/95 backdrop-blur-xl pt-24 px-4 opacity-0 pointer-events-none transition-opacity duration-200"
+>
+  <div class="flex flex-col items-center space-y-4">
+    {
+      navItems.map((item, index) => (
+        <button
+          data-href={item.href}
+          class="mobile-nav-item w-full max-w-xs py-4 rounded-xl bg-white/5 border border-white/10 text-lg font-medium text-gray-300 hover:text-white hover:bg-emerald-600/20 hover:border-emerald-500/50 transition-all duration-300 opacity-0 translate-y-5"
+          style={`transition-delay: ${index * 100}ms;`}
+        >
+          {item.name}
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  #navbar {
+    animation: slideDown 0.5s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .nav-item:hover ~ #active-indicator,
+  .nav-item.active ~ #active-indicator {
+    opacity: 1;
+  }
+
+  #mobile-menu.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  #mobile-menu.open .mobile-nav-item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Handle scroll effect
+  const navbar = document.getElementById("navbar");
+  let isScrolled = false;
+
+  function handleScroll() {
+    const shouldBeScrolled = window.scrollY > 50;
+    if (shouldBeScrolled !== isScrolled) {
+      isScrolled = shouldBeScrolled;
+      if (isScrolled) {
+        navbar?.classList.remove("py-4", "bg-transparent");
+        navbar?.classList.add(
+          "py-3",
+          "bg-black/50",
+          "backdrop-blur-md",
+          "border-b",
+          "border-white/10"
+        );
+      } else {
+        navbar?.classList.remove(
+          "py-3",
+          "bg-black/50",
+          "backdrop-blur-md",
+          "border-b",
+          "border-white/10"
+        );
+        navbar?.classList.add("py-4", "bg-transparent");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+
+  // Smooth scroll function
+  function scrollToSection(sectionId: string) {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      const navbarHeight = 80;
+      const elementPosition =
+        (element as HTMLElement).offsetTop - navbarHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+
+  // Handle active section detection
+  const navItems = document.querySelectorAll(".nav-item");
+  const activeIndicator = document.getElementById("active-indicator");
+  let activeSection = "Home";
+
+  function updateActiveIndicator(button: HTMLElement) {
+    if (!activeIndicator) return;
+
+    const rect = button.getBoundingClientRect();
+    const parentRect = button.parentElement?.getBoundingClientRect();
+
+    if (parentRect) {
+      activeIndicator.style.width = `${rect.width}px`;
+      activeIndicator.style.height = `${rect.height}px`;
+      activeIndicator.style.left = `${rect.left - parentRect.left}px`;
+      activeIndicator.style.top = `${rect.top - parentRect.top}px`;
+      activeIndicator.style.opacity = "1";
+    }
+  }
+
+  // Set initial active item
+  const homeButton = Array.from(navItems).find(
+    (item) => (item as HTMLElement).dataset.name === "Home"
+  ) as HTMLElement;
+  if (homeButton) {
+    updateActiveIndicator(homeButton);
+    homeButton.classList.add("active", "text-white");
+  }
+
+  // Handle navigation item hover and click
+  navItems.forEach((item) => {
+    const button = item as HTMLElement;
+
+    button.addEventListener("mouseenter", () => {
+      updateActiveIndicator(button);
+    });
+
+    button.addEventListener("click", () => {
+      const href = button.dataset.href;
+      if (href) {
+        // Update active state
+        navItems.forEach((nav) => nav.classList.remove("active", "text-white"));
+        button.classList.add("active", "text-white");
+        activeSection = button.dataset.name || "";
+
+        scrollToSection(href);
+      }
+    });
+  });
+
+  // Reset indicator on mouse leave
+  const desktopNav = document.querySelector(
+    ".md\\:flex.items-center.space-x-1"
+  );
+  desktopNav?.addEventListener("mouseleave", () => {
+    const activeItem = Array.from(navItems).find((item) =>
+      item.classList.contains("active")
+    ) as HTMLElement;
+    if (activeItem) {
+      updateActiveIndicator(activeItem);
+    }
+  });
+
+  // Handle logo click
+  const logoBtn = document.getElementById("logo-btn");
+  logoBtn?.addEventListener("click", () => {
+    const href = logoBtn.dataset.href;
+    if (href) {
+      scrollToSection(href);
+      // Set Home as active
+      navItems.forEach((nav) => nav.classList.remove("active", "text-white"));
+      if (homeButton) {
+        homeButton.classList.add("active", "text-white");
+        updateActiveIndicator(homeButton);
+      }
+    }
+  });
+
+  // Mobile menu handling
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
+  let isMenuOpen = false;
+
+  mobileMenuBtn?.addEventListener("click", () => {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      mobileMenu?.classList.add("open");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    } else {
+      mobileMenu?.classList.remove("open");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    }
+  });
+
+  // Handle mobile navigation clicks
+  mobileNavItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const href = (item as HTMLElement).dataset.href;
+      if (href) {
+        // Close menu
+        isMenuOpen = false;
+        mobileMenu?.classList.remove("open");
+        menuIcon?.classList.remove("hidden");
+        closeIcon?.classList.add("hidden");
+
+        // Scroll after a short delay
+        setTimeout(() => {
+          scrollToSection(href);
+        }, 100);
+      }
+    });
+  });
+</script>
