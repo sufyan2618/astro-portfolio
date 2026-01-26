@@ -24,7 +24,7 @@ const images = import.meta.glob('../assets/*.{webp,png,jpg,svg}', { eager: true 
         </span>
       </h2>
 
-      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+      <p class="text-gray-200 text-base max-w-2xl mx-auto leading-relaxed">
         A comprehensive toolkit of modern technologies spanning frontend, backend, cloud infrastructure, and development tools.
       </p>
 
@@ -42,9 +42,10 @@ const images = import.meta.glob('../assets/*.{webp,png,jpg,svg}', { eager: true 
             class={`category-btn px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 flex items-center gap-2 hover:scale-105 backdrop-blur-md ${
               category.id === "all"
                 ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/20 active"
-                : "bg-white/5 text-gray-300 border border-white/10 hover:border-emerald-500 hover:text-emerald-400"
+                : "bg-white/10 text-gray-200 border border-white/20 hover:border-emerald-500 hover:text-emerald-300"
             }`}
             data-category={category.id}
+            aria-label={`Show ${category.name} skills`}
           >
             <Icon class="w-4 h-4" />
             {category.name}
@@ -97,21 +98,21 @@ const images = import.meta.glob('../assets/*.{webp,png,jpg,svg}', { eager: true 
         <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
           {skills.length}+
         </div>
-        <div class="text-sm text-gray-400 mt-1">Technologies</div>
+        <div class="text-sm text-gray-300 mt-1">Technologies</div>
       </div>
       <div class="w-px h-12 bg-gradient-to-b from-emerald-600/50 to-teal-600/50"></div>
       <div class="text-center">
         <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
           2+
         </div>
-        <div class="text-sm text-gray-400 mt-1">Years Experience</div>
+        <div class="text-sm text-gray-300 mt-1">Years Experience</div>
       </div>
       <div class="w-px h-12 bg-gradient-to-b from-emerald-600/50 to-teal-600/50"></div>
       <div class="text-center">
         <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
           10+
         </div>
-        <div class="text-sm text-gray-400 mt-1">Projects Completed</div>
+        <div class="text-sm text-gray-300 mt-1">Projects Completed</div>
       </div>
     </div>
   </div>

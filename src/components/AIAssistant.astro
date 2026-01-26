@@ -7,6 +7,7 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
 <button
   id="ai-trigger"
   class="fixed bottom-6 right-6 z-50 p-4 rounded-full shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all duration-300 bg-black border border-emerald-500/50 text-emerald-400 hover:scale-110 hover:rotate-6"
+  aria-label="Open AI Assistant"
 >
   <div class="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping"></div>
   <Cpu size={28} class="relative z-10" />
@@ -35,12 +36,14 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
       <button 
         id="minimize-btn"
         class="text-emerald-500/50 hover:text-emerald-400 p-1"
+        aria-label="Minimize Chat"
       >
         <Minimize2 size={14} />
       </button>
       <button 
         id="close-btn"
         class="text-emerald-500/50 hover:text-red-400 p-1 transition-colors"
+        aria-label="Close Chat"
       >
         <X size={16} />
       </button>
@@ -70,6 +73,7 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
       <button
         id="send-btn"
         class="p-2.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded hover:bg-emerald-500/20 hover:shadow-[0_0_10px_rgba(16,185,129,0.2)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+        aria-label="Send Message"
       >
         <Send size={16} />
       </button>

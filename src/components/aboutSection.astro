@@ -43,16 +43,16 @@ const techStack = ['React', 'Node.js', 'MongoDB', 'Express', 'React Native', 'Fa
               Software Engineering Student & Developer
             </h3>
 
-            <div class="space-y-4 text-gray-300 leading-relaxed">
+            <div class="space-y-4 text-gray-200 leading-relaxed">
               <p>
-                As a passionate software engineering student from <span class="text-emerald-400 font-semibold">Lahore, Punjab</span>, 
+                As a passionate software engineering student from <span class="text-emerald-300 font-semibold">Lahore, Punjab</span>, 
                 I'm dedicated to crafting innovative digital solutions that solve real-world problems.
               </p>
               
               <p>
                 I believe in clean code, elegant design, and user-centered thinking. Whether building web applications, 
-                mobile apps, or cloud solutions, I approach each project with <span class="text-emerald-400 font-semibold">creativity</span> and 
-                <span class="text-emerald-400 font-semibold"> precision</span>.
+                mobile apps, or cloud solutions, I approach each project with <span class="text-emerald-300 font-semibold">creativity</span> and 
+                <span class="text-emerald-300 font-semibold"> precision</span>.
               </p>
             </div>
 
@@ -60,7 +60,7 @@ const techStack = ['React', 'Node.js', 'MongoDB', 'Express', 'React Native', 'Fa
             <div class="flex flex-wrap gap-2 mt-6">
               {techStack.map((tech) => (
                 <span 
-                  class="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-xs text-gray-300 hover:border-emerald-500 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110"
+                  class="px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-xs text-gray-200 hover:border-emerald-500 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110"
                 >
                   {tech}
                 </span>
@@ -107,7 +107,7 @@ const techStack = ['React', 'Node.js', 'MongoDB', 'Express', 'React Native', 'Fa
                 <div class="flex items-start gap-4">
                   <!-- Icon Container -->
                   <div class="p-3 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 shrink-0 shadow-lg shadow-emerald-500/20">
-                    <Icon class="w-6 h-6 text-white" />
+                    <Icon class="w-6 h-6 text-white" aria-hidden="true" />
                   </div>
 
                   <!-- Content -->
@@ -115,7 +115,7 @@ const techStack = ['React', 'Node.js', 'MongoDB', 'Express', 'React Native', 'Fa
                     <h4 class="text-lg font-bold text-white mb-2">
                       {skill.title}
                     </h4>
-                    <p class="text-gray-400 leading-relaxed">
+                    <p class="text-gray-300 leading-relaxed">
                       {skill.description}
                     </p>
                   </div>

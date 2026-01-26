@@ -38,7 +38,7 @@ const currentYear = new Date().getFullYear();
               Sufyan Liaqat
             </span>
           </div>
-          <p class="text-gray-400 text-sm leading-relaxed">
+          <p class="text-gray-300 text-sm leading-relaxed">
             Full-Stack Developer crafting exceptional digital experiences with modern technologies. 
             Building the future, one line of code at a time.
           </p>
@@ -59,7 +59,8 @@ const currentYear = new Date().getFullYear();
               <li>
                 <a
                   href={link.href}
-                  class="text-gray-400 hover:text-emerald-400 transition-all duration-300 text-sm flex items-center gap-2 group"
+                  class="text-gray-300 hover:text-emerald-400 transition-all duration-300 text-sm flex items-center gap-2 group"
+                  aria-label={`Go to ${link.name} section`}
                 >
                   <span class="w-0 h-0.5 bg-emerald-500 group-hover:w-4 transition-all duration-300 rounded-full"></span>
                   {link.name}
@@ -91,7 +92,7 @@ const currentYear = new Date().getFullYear();
               );
             })}
           </div>
-          <p class="text-gray-400 text-sm">
+          <p class="text-gray-300 text-sm">
             Let's collaborate on something amazing!
           </p>
         </div>
@@ -113,7 +114,7 @@ const currentYear = new Date().getFullYear();
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
         
         <!-- Copyright -->
-        <div class="flex items-center gap-2 text-sm text-gray-400">
+        <div class="flex items-center gap-2 text-sm text-gray-300">
           <span>&copy; {currentYear}</span>
           <span class="text-emerald-500">•</span>
           <span>Sufyan Liaqat</span>

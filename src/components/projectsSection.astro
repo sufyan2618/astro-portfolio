@@ -21,7 +21,7 @@ const projectImages = import.meta.glob('../assets/projects/*.{webp,png,jpg,svg}'
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"> Projects</span>
       </h2>
 
-      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+      <p class="text-gray-200 text-base max-w-2xl mx-auto leading-relaxed">
         Here are some of my recent projects showcasing expertise in full-stack development,
         AI integration, and modern web technologies.
       </p>
@@ -52,7 +52,7 @@ const projectImages = import.meta.glob('../assets/projects/*.{webp,png,jpg,svg}'
           </button>
         </div>
 
-        <div class="text-sm text-gray-400">
+        <div class="text-sm text-gray-300">
           Scroll to explore →
         </div>
       </div>
@@ -141,7 +141,7 @@ const projectImages = import.meta.glob('../assets/projects/*.{webp,png,jpg,svg}'
                 {project.title}
               </h3>
 
-              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">
                 {project.description.length > 120
                   ? `${project.description.substring(0, 120)}...`
                   : project.description}
@@ -154,19 +154,19 @@ const projectImages = import.meta.glob('../assets/projects/*.{webp,png,jpg,svg}'
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-gray-400 hover:text-emerald-400 transition-all duration-300 hover:scale-125"
+                    class="text-gray-300 hover:text-emerald-400 transition-all duration-300 hover:scale-125"
                     aria-label={`View ${project.title} demo`}
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={18} aria-hidden="true" />
                   </a>
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="text-gray-400 hover:text-teal-400 transition-all duration-300 hover:scale-125"
+                    class="text-gray-300 hover:text-teal-400 transition-all duration-300 hover:scale-125"
                     aria-label={`View ${project.title} on GitHub`}
                   >
-                    <Github size={18} />
+                    <Github size={18} aria-hidden="true" />
                   </a>
                 </div>
 

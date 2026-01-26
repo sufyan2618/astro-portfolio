@@ -25,6 +25,7 @@ const navItems = [
       id="logo-btn"
       class="group flex items-center space-x-3 z-10 cursor-pointer"
       data-href="#hero"
+      aria-label="Back to home"
     >
       <div class="relative w-10 h-10">
         <div
@@ -63,7 +64,8 @@ const navItems = [
           <button
             data-href={item.href}
             data-name={item.name}
-            class="nav-item relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-gray-400 hover:text-white"
+            class="nav-item relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-gray-300 hover:text-white"
+            aria-label={`Navigate to ${item.name}`}
           >
             <span class="relative z-10">{item.name}</span>
           </button>

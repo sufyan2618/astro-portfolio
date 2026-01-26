@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sufyanliaqat.me/sitemap-index.xml

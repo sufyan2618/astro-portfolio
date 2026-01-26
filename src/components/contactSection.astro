@@ -76,7 +76,7 @@ const socialLinks = [
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"> Touch</span>
       </h2>
       
-      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+      <p class="text-gray-200 text-base max-w-2xl mx-auto leading-relaxed">
         Have a project in mind or want to collaborate? I'm always excited to discuss new opportunities 
         and bring innovative ideas to life. Let's create something amazing together!
       </p>
@@ -114,7 +114,8 @@ const socialLinks = [
                     </h4>
                     <a
                       href={info.href}
-                      class="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-sm"
+                      class="text-gray-200 hover:text-teal-400 transition-colors duration-300 text-sm"
+                      aria-label={`Contact me via ${info.title}`}
                     >
                       {info.value}
                     </a>
@@ -163,7 +164,7 @@ const socialLinks = [
             <form id="contact-form" class="space-y-5">
               <!-- Name Input -->
               <div class="relative">
-                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+                <label for="name" class="block text-sm font-medium text-gray-200 mb-2">
                   Your Name
                 </label>
                 <input
@@ -178,7 +179,7 @@ const socialLinks = [
 
               <!-- Email Input -->
               <div class="relative">
-                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                <label for="email" class="block text-sm font-medium text-gray-200 mb-2">
                   Your Email
                 </label>
                 <input
@@ -193,7 +194,7 @@ const socialLinks = [
 
               <!-- Message Input -->
               <div class="relative">
-                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">
+                <label for="message" class="block text-sm font-medium text-gray-200 mb-2">
                   Your Message
                 </label>
                 <textarea
