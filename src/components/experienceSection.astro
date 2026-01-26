@@ -2,6 +2,9 @@
 // ExperienceSection.astro
 import { Briefcase, Calendar, MapPin, ArrowRight, Building2, Code2, Users, Award, ChevronDown, Zap, TrendingUp } from "lucide-react";
 import { experiences } from "../lib/data";
+import { Image } from "astro:assets";
+
+const logos = import.meta.glob('../assets/*.{webp,png,jpg,svg}', { eager: true });
 ---
 
 <section 
@@ -11,8 +14,7 @@ import { experiences } from "../lib/data";
   <div class="container mx-auto max-w-6xl relative z-10 px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div 
-      class="section-header text-center mb-20 opacity-0"
-      data-animate
+      class="section-header text-center mb-20"
     >
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
         <span class="text-white">Professional</span>
@@ -35,9 +37,8 @@ import { experiences } from "../lib/data";
       <div class="space-y-0">
         {experiences.map((experience, index) => (
           <div
-            class="experience-item relative opacity-0"
-            data-animate
-            data-delay={index * 200}
+            class="experience-item relative"
+            style={`--delay: ${index * 200}ms;`}
           >
             <!-- Timeline Date Badge - Desktop centered -->
             <div class="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 z-20">
@@ -89,10 +90,13 @@ import { experiences } from "../lib/data";
                     <div class="relative flex items-start gap-3">
                       <!-- Company Icon -->
                       <div class="w-10 h-10 shrink-0 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden">
-                        <img 
-                          src={experience.logo} 
+                        <Image 
+                          src={(logos[`../assets${experience.logo.startsWith('/') ? experience.logo : '/' + experience.logo}`] as any)?.default} 
                           alt={`${experience.company} Logo`} 
+                          width={32}
+                          height={32}
                           class="w-8 h-8 object-cover"
+                          loading="lazy"
                         />
                       </div>
 
@@ -230,16 +234,21 @@ import { experiences } from "../lib/data";
 </section>
 
 <style>
-  /* Animation states */
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Pure CSS animations */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  [data-animate].visible {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes experienceItemIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header { animation: slideUp 0.8s ease-out forwards; }
+  .experience-item { 
+    animation: experienceItemIn 0.8s ease-out var(--delay) forwards; 
+    opacity: 0; 
   }
 
   /* Tilt card transitions */
@@ -286,33 +295,7 @@ import { experiences } from "../lib/data";
 </style>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const target = entry.target as HTMLElement;
-        const delay = target.dataset.delay || '0';
-        
-        setTimeout(() => {
-          target.classList.add('visible');
-        }, parseInt(delay));
-        
-        observer.unobserve(target);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  document.querySelectorAll('[data-animate]').forEach((element) => {
-    observer.observe(element);
-  });
+  // Scroll animations removed and replaced with pure CSS for initial load
 
   // 3D Tilt Effect for Cards
   const initTiltCards = () => {

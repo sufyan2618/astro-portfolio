@@ -23,8 +23,8 @@ export const skills = [
   { name: "Redis", category: "backend", icon: "redis.webp" },
   { name: "Socket.io", category: "backend", icon: "socket.io.webp" },
   { name: "Bull", category: "backend", icon: "bull.webp" },
-  { name: "RabbitMQ", category: "backend", icon: "rabbitmq.webp" },
-  { name: "Drizzle ORM", category: "backend", icon: "drizzle-orm.webp" },
+  { name: "RabbitMQ", category: "backend", icon: "RabbitMQ.webp" },
+  { name: "Drizzle ORM", category: "backend", icon: "drizzle.webp" },
   { name: "SQLAlchemy", category: "backend", icon: "SQLAlchemy.webp" },
   { name: "Stripe", category: "backend", icon: "stripe.webp" },
 
@@ -88,7 +88,7 @@ export const experiences = [
       "Integrated Celery with RabbitMQ for asynchronous task processing, handling background jobs for report generation, email notifications, and data synchronization",
       "Designed and implemented RESTful APIs with comprehensive documentation using FastAPI's automatic OpenAPI generation, improving developer onboarding and integration time"
     ],
-    technologies: ["FastAPI", "PostgreSQL", "SQLAlchemy", "React", "Material-UI", "Next.js", "React Native", "Expo", "Celery", "RabbitMQ", "Firebase", "TypeScript", "Python", "Docker", "Kubernetes","Jira"],
+    technologies: ["FastAPI", "PostgreSQL", "SQLAlchemy", "React", "Material-UI", "Next.js", "React Native", "Expo", "Celery", "RabbitMQ", "Firebase", "TypeScript", "Python", "Docker", "Kubernetes", "Jira"],
     achievements: [
       "Reduced database query execution time by 65% through advanced SQLAlchemy optimization techniques",
       "Increased streaming platform user retention by 40% with Next.js SSR implementation",
@@ -172,7 +172,7 @@ export const projects = [
     featured: true,
     category: "Full Stack / Real Estate Tech"
   },
-    {
+  {
     id: 2,
     title: "AI Stylist",
     description: "Personalized Fashion Assistant with AI-powered recommendations, virtual try-on, and outfit generation. Built interactive questionnaires delivering personalized style recommendations via fine-tuned LLMs, integrated virtual try-on technology, and outfit combination generation.",

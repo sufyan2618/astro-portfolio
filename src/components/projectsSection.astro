@@ -2,6 +2,9 @@
 // ProjectsSection.astro
 import { ArrowRight, ExternalLink, Github, Star, Eye } from "lucide-react";
 import { projects } from "../lib/data";
+import { Image } from "astro:assets";
+
+const projectImages = import.meta.glob('../assets/projects/*.{webp,png,jpg,svg}', { eager: true });
 ---
 
 <section
@@ -11,8 +14,7 @@ import { projects } from "../lib/data";
   <div class="container mx-auto max-w-7xl relative z-10 h-full flex flex-col justify-center py-12">
     <!-- Section Header -->
     <div 
-      class="section-header text-center mb-12 opacity-0"
-      data-animate
+      class="section-header text-center mb-12"
     >
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
         <span class="text-white">Featured</span>
@@ -29,9 +31,7 @@ import { projects } from "../lib/data";
 
     <!-- Projects Container -->
     <div 
-      class="projects-container relative opacity-0"
-      data-animate
-      data-delay="200"
+      class="projects-container relative"
     >
       <!-- Scroll Navigation -->
       <div class="flex justify-between items-center mb-6">
@@ -65,9 +65,8 @@ import { projects } from "../lib/data";
       >
         {projects.map((project, index) => (
           <div
-            class="project-card flex-none w-80 sm:w-96 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden hover:border-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group opacity-0"
-            data-animate-card
-            data-delay={index * 100}
+            class="project-card flex-none w-80 sm:w-96 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden hover:border-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group"
+            style={{'--delay': `${index * 100}ms`}}
           >
             <!-- Featured Badge -->
             {project.featured && (
@@ -80,10 +79,13 @@ import { projects } from "../lib/data";
 
             <!-- Image Container -->
             <div class="relative h-48 overflow-hidden">
-              <img
-                src={project.image}
+              <Image
+                src={(projectImages[`../assets${project.image}`] as any)?.default || (projectImages[`../assets/projects/${project.image.split('/').pop()}`] as any)?.default}
                 alt={project.title}
+                width={400}
+                height={200}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
 
               <!-- Hover Actions -->
@@ -180,9 +182,7 @@ import { projects } from "../lib/data";
 
     <!-- CTA Button -->
     <div 
-      class="cta-section text-center mt-16 opacity-0"
-      data-animate
-      data-delay="400"
+      class="cta-section text-center mt-16"
     >
       <a
         href="https://github.com/sufyan2618"
@@ -214,29 +214,24 @@ import { projects } from "../lib/data";
     scroll-behavior: smooth;
   }
 
-  /* Animation states */
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Pure CSS animations */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  [data-animate].visible {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
   }
 
-  /* Project cards animation */
-  [data-animate-card] {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  .section-header { animation: slideUp 0.8s ease-out forwards; }
+  .projects-container { animation: slideUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+  .project-card { 
+    animation: slideInRight 0.8s ease-out var(--delay) forwards; 
+    opacity: 0; 
   }
-
-  [data-animate-card].visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  .cta-section { animation: slideUp 0.8s ease-out 0.4s forwards; opacity: 0; }
 
   /* Gradient fixes */
   .bg-linear-to-r {
@@ -245,61 +240,7 @@ import { projects } from "../lib/data";
 </style>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const target = entry.target as HTMLElement;
-        const delay = target.dataset.delay || '0';
-        
-        setTimeout(() => {
-          target.classList.add('visible');
-        }, parseInt(delay));
-        
-        observer.unobserve(target);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  // Observe section elements
-  document.querySelectorAll('[data-animate]').forEach((element) => {
-    observer.observe(element);
-  });
-
-  // Separate observer for project cards (triggers when container is in view)
-  const cardsObserverCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const cards = document.querySelectorAll('[data-animate-card]');
-        cards.forEach((card) => {
-          const cardElement = card as HTMLElement;
-          const delay = cardElement.dataset.delay || '0';
-          
-          setTimeout(() => {
-            cardElement.classList.add('visible');
-          }, parseInt(delay));
-        });
-        
-        cardsObserver.unobserve(entry.target);
-      }
-    });
-  };
-
-  const cardsObserver = new IntersectionObserver(cardsObserverCallback, observerOptions);
-  const projectsContainer = document.getElementById('projects-scroll-container');
-  if (projectsContainer) {
-    cardsObserver.observe(projectsContainer);
-  }
-
-  // Horizontal scroll functionality
+  // Horizontal scroll and other functionality
   const scrollLeftBtn = document.getElementById('scroll-left-btn');
   const scrollRightBtn = document.getElementById('scroll-right-btn');
   const scrollContainer = document.getElementById('projects-scroll-container');

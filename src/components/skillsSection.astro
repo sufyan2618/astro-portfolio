@@ -1,6 +1,10 @@
 ---
 // SkillsSection.astro
 import { skills, skillCategories } from "../lib/data";
+import { Image } from "astro:assets";
+
+// Dynamically import all images from assets
+const images = import.meta.glob('../assets/*.{webp,png,jpg,svg}', { eager: true });
 ---
 
 <section
@@ -10,8 +14,7 @@ import { skills, skillCategories } from "../lib/data";
   <div class="container mx-auto max-w-7xl relative z-10 h-full flex flex-col justify-center py-16 px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div
-      class="section-header text-center mb-12 opacity-0"
-      data-animate
+      class="section-header text-center mb-12"
     >
       <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
         <span class="text-white">My</span>
@@ -30,9 +33,7 @@ import { skills, skillCategories } from "../lib/data";
 
     <!-- Category Filter -->
     <div
-      class="filter-buttons flex flex-wrap justify-center gap-3 mb-10 opacity-0"
-      data-animate
-      data-delay="200"
+      class="filter-buttons flex flex-wrap justify-center gap-3 mb-10"
     >
       {skillCategories.map((category) => {
         const Icon = category.icon;
@@ -59,9 +60,9 @@ import { skills, skillCategories } from "../lib/data";
     >
       {skills.map((skill, index) => (
         <div
-          class="skill-card bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 hover:border-emerald-500/50 transition-all duration-300 group"
+          class="skill-card bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 hover:border-emerald-500/50 transition-all duration-300 group show"
           data-category={skill.category}
-          style={`--delay: ${index * 0.02}s;`}
+          style={{'--delay': `${index * 30}ms`}}
         >
           <!-- Skill Content -->
           <div class="flex flex-col items-center gap-3 text-center transform transition-transform duration-300">
@@ -69,10 +70,13 @@ import { skills, skillCategories } from "../lib/data";
               {typeof skill.icon === "string" && !skill.icon.includes(".") ? (
                 <span class="text-3xl">{skill.icon}</span>
               ) : (
-                <img
-                  src={`/${skill.icon}`}
+                <Image
+                  src={(images[`../assets/${skill.icon}`] as any)?.default || (images[`../assets/${skill.icon.replace(/^\//, '')}`] as any)?.default}
                   alt={skill.name}
+                  width={40}
+                  height={40}
                   class="w-10 h-10 object-contain drop-shadow-lg"
+                  loading="lazy"
                 />
               )}
             </div>
@@ -87,9 +91,7 @@ import { skills, skillCategories } from "../lib/data";
 
     <!-- Bottom Stats -->
     <div
-      class="stats-section flex flex-wrap justify-center items-center gap-12 mt-16 opacity-0"
-      data-animate
-      data-delay="400"
+      class="stats-section flex flex-wrap justify-center items-center gap-12 mt-16"
     >
       <div class="text-center">
         <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
@@ -116,17 +118,24 @@ import { skills, skillCategories } from "../lib/data";
 </section>
 
 <style>
-  /* Animation states */
-  [data-animate] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Pure CSS animations */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  [data-animate].visible {
-    opacity: 1;
-    transform: translateY(0);
+  @keyframes skillPop {
+    from { opacity: 0; transform: scale(0.9) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
   }
+
+  .section-header { animation: slideUp 0.8s ease-out forwards; }
+  .filter-buttons { animation: slideUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+  .skill-card.show { 
+    animation: skillPop 0.5s ease-out var(--delay) forwards; 
+    opacity: 0; 
+  }
+  .stats-section { animation: slideUp 0.8s ease-out 0.4s forwards; opacity: 0; }
 
   /* Skills Grid Animations */
   .skill-card {
@@ -187,34 +196,6 @@ import { skills, skillCategories } from "../lib/data";
 </style>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const target = entry.target as HTMLElement;
-        const delay = target.dataset.delay || '0';
-        
-        setTimeout(() => {
-          target.classList.add('visible');
-        }, parseInt(delay));
-        
-        observer.unobserve(target);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  document.querySelectorAll('[data-animate]').forEach((element) => {
-    observer.observe(element);
-  });
-
   // Category Filtering with Animation
   let activeCategory = 'all';
   const categoryButtons = document.querySelectorAll('.category-btn');
@@ -277,16 +258,4 @@ import { skills, skillCategories } from "../lib/data";
     });
   });
 
-  // Initialize: show all cards on load
-  const initializeCards = () => {
-    skillCards.forEach((card) => {
-      const cardElement = card as HTMLElement;
-      cardElement.classList.add('show');
-    });
-  };
-
-  // Wait for scroll animation to complete before showing cards
-  setTimeout(() => {
-    initializeCards();
-  }, 500);
 </script>

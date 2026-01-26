@@ -1,7 +1,11 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import Background3D from '../components/react/Background3D.jsx';
+import { getImage } from "astro:assets";
+import heroImg from "../assets/hero.webp";
 import '../styles/global.css';
+
+const optimizedHero = await getImage({ src: heroImg, format: 'webp' });
 interface Props {
   title: string;
 }
@@ -18,11 +22,14 @@ const { title } = Astro.props;
   
   <!-- ViewTransitions go HERE in the <head> - enables smooth page animations -->
   <ViewTransitions />
+
+  <!-- Preload LCP targets -->
+  <link rel="preload" href={optimizedHero.src} as="image" type="image/webp" />
 </head>
 <body class="min-h-screen text-foreground overflow-x-hidden">
   
-  <!-- Background3D stays as React, loads ONLY on client (browser) -->
-  <Background3D client:only="react" />
+  <!-- Background3D stays as React, loads on IDLE to prioritize LCP -->
+  <Background3D client:idle />
   
   <!-- Page content from index.astro goes here -->
   <slot />

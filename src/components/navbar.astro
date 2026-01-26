@@ -1,6 +1,8 @@
 ---
 // Navbar.astro
 import { Menu, X } from "lucide-react";
+import { Image } from "astro:assets";
+import logoImg from "../assets/logo.webp";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -28,10 +30,13 @@ const navItems = [
         <div
           class="relative w-full h-full rounded-full border-2 border-white/10 group-hover:border-emerald-500 transition-all duration-300 overflow-hidden"
         >
-          <img
-            src="/logo.webp"
+          <Image
+            src={logoImg}
+            width={40}
+            height={40}
             class="w-full h-full object-cover"
             alt="Logo"
+            loading="eager"
           />
         </div>
       </div>
