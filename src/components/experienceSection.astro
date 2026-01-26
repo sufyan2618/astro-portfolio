@@ -1,0 +1,415 @@
+---
+// ExperienceSection.astro
+import { Briefcase, Calendar, MapPin, ArrowRight, Building2, Code2, Users, Award, ChevronDown, Zap, TrendingUp } from "lucide-react";
+import { experiences } from "../lib/data";
+---
+
+<section 
+  id="experience" 
+  class="relative min-h-screen py-20 overflow-hidden"
+>
+  <div class="container mx-auto max-w-6xl relative z-10 px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div 
+      class="section-header text-center mb-20 opacity-0"
+      data-animate
+    >
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
+        <span class="text-white">Professional</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"> Journey</span>
+      </h2>
+      
+      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+        Building scalable solutions and innovative products across the full stack
+      </p>
+      
+      <div class="w-20 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mx-auto mt-6"></div>
+    </div>
+
+    <!-- Vertical Timeline -->
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-600/20 via-teal-600/40 to-transparent"></div>
+
+      <!-- Timeline Items -->
+      <div class="space-y-0">
+        {experiences.map((experience, index) => (
+          <div
+            class="experience-item relative opacity-0"
+            data-animate
+            data-delay={index * 200}
+          >
+            <!-- Timeline Date Badge - Desktop centered -->
+            <div class="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 z-20">
+              <div class="bg-black/50 backdrop-blur-md border-2 border-emerald-600 rounded-full px-6 py-2 shadow-lg shadow-emerald-500/20">
+                <div class="text-center">
+                  <div class="text-xs font-bold text-emerald-400">{experience.startDate}</div>
+                  <div class="text-[10px] text-gray-400">to</div>
+                  <div class="text-xs font-bold text-teal-400">{experience.endDate}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Node with pulsing effect -->
+            <div class="absolute left-8 md:left-1/2 top-24 transform -translate-x-1/2 z-10">
+              <div class="relative">
+                <div class="absolute inset-0 w-6 h-6 rounded-full bg-emerald-600/30 animate-ping"></div>
+                <div class="relative w-6 h-6 rounded-full bg-gradient-to-br from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/50 border-4 border-black"></div>
+              </div>
+            </div>
+
+            <!-- Content Card - Alternating sides on desktop -->
+            <div class={`pt-16 md:pt-20 pb-8 md:pb-12 ml-20 md:ml-0 md:w-[calc(50%-4rem)] ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
+              
+              <!-- Date Badge - Mobile only -->
+              <div class="md:hidden mb-4 inline-block">
+                <div class="bg-white/5 backdrop-blur-md border border-emerald-600/50 rounded-lg px-4 py-2">
+                  <div class="flex items-center gap-2 text-xs">
+                    <span class="font-bold text-emerald-400">{experience.startDate}</span>
+                    <span class="text-gray-500">→</span>
+                    <span class="font-bold text-teal-400">{experience.endDate}</span>
+                    <span class="text-gray-500">•</span>
+                    <span class="text-gray-400">{experience.period}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tilt Card -->
+              <div 
+                class="tilt-card bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden hover:border-emerald-600 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-500 group"
+                data-tilt
+                data-experience-id={experience.id}
+                style="transform-style: preserve-3d; perspective: 1000px;"
+              >
+                <div class="tilt-content" style="transform: translateZ(20px);">
+                  <!-- Compact Header -->
+                  <div class="relative p-5 border-b border-white/5 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/5 via-teal-600/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div class="relative flex items-start gap-3">
+                      <!-- Company Icon -->
+                      <div class="w-10 h-10 shrink-0 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src={experience.logo} 
+                          alt={`${experience.company} Logo`} 
+                          class="w-8 h-8 object-cover"
+                        />
+                      </div>
+
+                      <div class="flex-1 min-w-0">
+                        <!-- Role & Company -->
+                        <div class="flex items-start justify-between gap-2 mb-2">
+                          <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-1">
+                              {experience.role}
+                            </h3>
+                            <div class="text-base font-semibold text-emerald-400">
+                              {experience.company}
+                            </div>
+                          </div>
+                          {experience.isActive && (
+                            <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-500/20 border border-emerald-500/50 rounded-full text-[10px] text-emerald-400 font-semibold animate-pulse whitespace-nowrap">
+                              <Zap class="w-2.5 h-2.5" />
+                              Active
+                            </span>
+                          )}
+                        </div>
+
+                        <!-- Meta info -->
+                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400">
+                          <span class="flex items-center gap-1">
+                            <MapPin class="w-3 h-3" />
+                            {experience.location}
+                          </span>
+                          <span>•</span>
+                          <span>{experience.period}</span>
+                          <span>•</span>
+                          <span>{experience.type}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Compact Content -->
+                  <div class="p-5">
+                    <!-- Description -->
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                      {experience.description}
+                    </p>
+
+                    <!-- Key Highlights - Show first 3 by default -->
+                    <div class="space-y-2 mb-4 responsibilities-list">
+                      {experience.responsibilities.map((responsibility, idx) => (
+                        <div 
+                          class={`flex items-start gap-2 text-xs text-gray-400 responsibility-item ${idx >= 3 ? 'hidden' : ''}`}
+                          data-index={idx}
+                        >
+                          <div class="p-0.5 rounded bg-emerald-600/20 mt-1">
+                            <ArrowRight class="w-3 h-3 text-emerald-400" />
+                          </div>
+                          <span class="flex-1">{responsibility}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <!-- Tech Stack - Compact -->
+                    <div class="mb-4">
+                      <div class="flex flex-wrap gap-1.5">
+                        {experience.technologies.slice(0, 8).map((tech) => (
+                          <span 
+                            class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {experience.technologies.length > 8 && (
+                          <span class="px-2 py-1 text-[10px] text-gray-500">
+                            +{experience.technologies.length - 8} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <!-- Expand/Collapse Button -->
+                    {experience.responsibilities.length > 3 && (
+                      <button
+                        class="expand-btn text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium transition-colors"
+                        data-experience-id={experience.id}
+                      >
+                        <span class="btn-text">View all details ({experience.responsibilities.length} highlights)</span>
+                        <ChevronDown class="w-3 h-3 transition-transform chevron-icon" />
+                      </button>
+                    )}
+
+                    <!-- Expanded Content -->
+                    <div class="expanded-content overflow-hidden" style="max-height: 0; opacity: 0;">
+                      <div class="pt-4 border-t border-white/10 space-y-4">
+                        <!-- All Technologies -->
+                        <div>
+                          <h4 class="text-xs font-semibold text-white mb-2 flex items-center gap-1">
+                            <Code2 class="w-3 h-3 text-emerald-400" />
+                            Full Tech Stack
+                          </h4>
+                          <div class="flex flex-wrap gap-1.5">
+                            {experience.technologies.map((tech) => (
+                              <span 
+                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-gray-400 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div>
+                          <h4 class="text-xs font-semibold text-white mb-2 flex items-center gap-1">
+                            <TrendingUp class="w-3 h-3 text-teal-400" />
+                            Key Achievements
+                          </h4>
+                          <div class="space-y-2">
+                            {experience.achievements.map((achievement, idx) => (
+                              <div class="flex items-start gap-2 text-xs text-gray-400">
+                                <div class="w-1 h-1 bg-teal-400 rounded-full mt-1.5"></div>
+                                <span class="flex-1">{achievement}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animation states */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Tilt card transitions */
+  .tilt-card {
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                border-color 0.5s ease,
+                box-shadow 0.5s ease;
+  }
+
+  .tilt-content {
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Expanded content animation */
+  .expanded-content {
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  }
+
+  .expanded-content.expanded {
+    max-height: 500px !important;
+    opacity: 1 !important;
+    margin-top: 1rem;
+  }
+
+  /* Chevron rotation */
+  .chevron-icon.rotated {
+    transform: rotate(180deg);
+  }
+
+  /* Gradient fixes */
+  .bg-linear-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        const delay = target.dataset.delay || '0';
+        
+        setTimeout(() => {
+          target.classList.add('visible');
+        }, parseInt(delay));
+        
+        observer.unobserve(target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach((element) => {
+    observer.observe(element);
+  });
+
+  // 3D Tilt Effect for Cards
+  const initTiltCards = () => {
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    
+    tiltCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      const content = cardElement.querySelector('.tilt-content') as HTMLElement;
+      
+      let isHovering = false;
+      
+      // Mouse move handler
+      cardElement.addEventListener('mousemove', (e: MouseEvent) => {
+        if (!isHovering) return;
+        
+        const rect = cardElement.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg
+        const rotateY = ((x - centerX) / centerX) * 10; // Max 10deg
+        
+        cardElement.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+      
+      // Mouse enter
+      cardElement.addEventListener('mouseenter', () => {
+        isHovering = true;
+      });
+      
+      // Mouse leave - reset
+      cardElement.addEventListener('mouseleave', () => {
+        isHovering = false;
+        cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
+    });
+  };
+
+  // Expand/Collapse functionality
+  const initExpandButtons = () => {
+    const expandButtons = document.querySelectorAll('.expand-btn');
+    const expandedStates = new Map<string, boolean>();
+    
+    expandButtons.forEach((button) => {
+      const btn = button as HTMLElement;
+      const experienceId = btn.dataset.experienceId;
+      if (!experienceId) return;
+      
+      expandedStates.set(experienceId, false);
+      
+      btn.addEventListener('click', () => {
+        const isExpanded = expandedStates.get(experienceId);
+        const card = btn.closest('[data-tilt]');
+        if (!card) return;
+        
+        const expandedContent = card.querySelector('.expanded-content') as HTMLElement;
+        const chevron = btn.querySelector('.chevron-icon') as HTMLElement;
+        const btnText = btn.querySelector('.btn-text') as HTMLElement;
+        const responsibilitiesList = card.querySelectorAll('.responsibility-item');
+        
+        if (!isExpanded) {
+          // Expand
+          expandedContent.classList.add('expanded');
+          chevron.classList.add('rotated');
+          btnText.textContent = 'Show less';
+          
+          // Show all responsibilities
+          responsibilitiesList.forEach((item) => {
+            (item as HTMLElement).classList.remove('hidden');
+          });
+          
+          expandedStates.set(experienceId, true);
+        } else {
+          // Collapse
+          expandedContent.classList.remove('expanded');
+          chevron.classList.remove('rotated');
+          
+          const totalCount = responsibilitiesList.length;
+          btnText.textContent = `View all details (${totalCount} highlights)`;
+          
+          // Hide responsibilities beyond index 2
+          responsibilitiesList.forEach((item, idx) => {
+            if (idx >= 3) {
+              (item as HTMLElement).classList.add('hidden');
+            }
+          });
+          
+          expandedStates.set(experienceId, false);
+        }
+      });
+    });
+  };
+
+  // Initialize all features
+  initTiltCards();
+  initExpandButtons();
+</script>

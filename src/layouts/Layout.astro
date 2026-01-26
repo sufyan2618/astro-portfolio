@@ -1,22 +1,31 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import { ViewTransitions } from 'astro:transitions';
+import Background3D from '../components/react/Background3D.jsx';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  
+  <!-- ViewTransitions go HERE in the <head> - enables smooth page animations -->
+  <ViewTransitions />
+</head>
+<body class="min-h-screen text-foreground overflow-x-hidden">
+  
+  <!-- Background3D stays as React, loads ONLY on client (browser) -->
+  <Background3D client:only="react" />
+  
+  <!-- Page content from index.astro goes here -->
+  <slot />
+  
+</body>
+</html>

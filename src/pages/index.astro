@@ -1,11 +1,38 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// This top section (between ---) is JavaScript that runs at BUILD TIME
+// It's like the code outside your return() in React
+
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Import static components as Astro
+import Navbar from '../components/Navbar.astro';
+import HeroSection from '../components/HeroSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+
+// Import interactive components as React (if they need state/interactivity)
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<!-- This is the HTML that gets rendered -->
+<Layout title="Sufyan Liaqat - Full Stack Developer">
+  
+  <Navbar />
+  
+  <main>
+    <HeroSection />
+    <AboutSection />
+    <SkillsSection />
+    <ExperienceSection />
+    <ProjectsSection />
+    
+    <!-- If ContactSection has forms with validation, keep as React -->
+    <ContactSection client:visible />
+  </main>
+  
+  <Footer />
+  
 </Layout>

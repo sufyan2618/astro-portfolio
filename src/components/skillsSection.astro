@@ -1,0 +1,292 @@
+---
+// SkillsSection.astro
+import { skills, skillCategories } from "../lib/data";
+---
+
+<section
+  id="skills"
+  class="relative py-20 overflow-hidden"
+>
+  <div class="container mx-auto max-w-7xl relative z-10 h-full flex flex-col justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div
+      class="section-header text-center mb-12 opacity-0"
+      data-animate
+    >
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
+        <span class="text-white">My</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
+          {" "}
+          Skills
+        </span>
+      </h2>
+
+      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+        A comprehensive toolkit of modern technologies spanning frontend, backend, cloud infrastructure, and development tools.
+      </p>
+
+      <div class="w-20 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mx-auto mt-6"></div>
+    </div>
+
+    <!-- Category Filter -->
+    <div
+      class="filter-buttons flex flex-wrap justify-center gap-3 mb-10 opacity-0"
+      data-animate
+      data-delay="200"
+    >
+      {skillCategories.map((category) => {
+        const Icon = category.icon;
+        return (
+          <button
+            class={`category-btn px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 flex items-center gap-2 hover:scale-105 backdrop-blur-md ${
+              category.id === "all"
+                ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/20 active"
+                : "bg-white/5 text-gray-300 border border-white/10 hover:border-emerald-500 hover:text-emerald-400"
+            }`}
+            data-category={category.id}
+          >
+            <Icon class="w-4 h-4" />
+            {category.name}
+          </button>
+        );
+      })}
+    </div>
+
+    <!-- Skills Grid -->
+    <div
+      id="skills-grid"
+      class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+    >
+      {skills.map((skill, index) => (
+        <div
+          class="skill-card bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-4 hover:border-emerald-500/50 transition-all duration-300 group"
+          data-category={skill.category}
+          style={`--delay: ${index * 0.02}s;`}
+        >
+          <!-- Skill Content -->
+          <div class="flex flex-col items-center gap-3 text-center transform transition-transform duration-300">
+            <div class="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 group-hover:rotate-12">
+              {typeof skill.icon === "string" && !skill.icon.includes(".") ? (
+                <span class="text-3xl">{skill.icon}</span>
+              ) : (
+                <img
+                  src={`/${skill.icon}`}
+                  alt={skill.name}
+                  class="w-10 h-10 object-contain drop-shadow-lg"
+                />
+              )}
+            </div>
+
+            <h3 class="font-semibold text-white text-sm group-hover:text-emerald-400 transition-colors">
+              {skill.name}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom Stats -->
+    <div
+      class="stats-section flex flex-wrap justify-center items-center gap-12 mt-16 opacity-0"
+      data-animate
+      data-delay="400"
+    >
+      <div class="text-center">
+        <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
+          {skills.length}+
+        </div>
+        <div class="text-sm text-gray-400 mt-1">Technologies</div>
+      </div>
+      <div class="w-px h-12 bg-gradient-to-b from-emerald-600/50 to-teal-600/50"></div>
+      <div class="text-center">
+        <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
+          2+
+        </div>
+        <div class="text-sm text-gray-400 mt-1">Years Experience</div>
+      </div>
+      <div class="w-px h-12 bg-gradient-to-b from-emerald-600/50 to-teal-600/50"></div>
+      <div class="text-center">
+        <div class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">
+          10+
+        </div>
+        <div class="text-sm text-gray-400 mt-1">Projects Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Animation states */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Skills Grid Animations */
+  .skill-card {
+    opacity: 1;
+    transform: scale(1);
+    transition: 
+      opacity 0.3s ease var(--delay),
+      transform 0.3s ease var(--delay),
+      border-color 0.2s ease,
+      box-shadow 0.3s ease;
+    transform-origin: center;
+  }
+
+  /* Hidden state for filtering */
+  .skill-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Show state - animate in */
+  .skill-card.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* 3D Hover effect */
+  .skill-card:hover {
+    transform: scale(1.05) rotateX(10deg) rotateY(10deg);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  /* Perspective for 3D effect */
+  #skills-grid {
+    perspective: 1000px;
+    transition: grid-template-columns 0.3s ease;
+  }
+
+  /* Active category button */
+  .category-btn.active {
+    background: linear-gradient(to right, rgb(5 150 105), rgb(20 184 166));
+    color: white;
+    box-shadow: 0 10px 15px -3px rgb(5 150 105 / 0.2);
+  }
+
+  /* Gradient fixes */
+  .bg-linear-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        const delay = target.dataset.delay || '0';
+        
+        setTimeout(() => {
+          target.classList.add('visible');
+        }, parseInt(delay));
+        
+        observer.unobserve(target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach((element) => {
+    observer.observe(element);
+  });
+
+  // Category Filtering with Animation
+  let activeCategory = 'all';
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const skillCards = document.querySelectorAll('.skill-card');
+
+  // Filter function with View Transition API support
+  const filterSkills = (category: string) => {
+    activeCategory = category;
+
+    // Update active button state
+    categoryButtons.forEach((btn) => {
+      const btnElement = btn as HTMLElement;
+      if (btnElement.dataset.category === category) {
+        btnElement.classList.add('active');
+        btnElement.classList.remove('bg-white/5', 'text-gray-300', 'border', 'border-white/10');
+        btnElement.classList.add('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'text-white', 'shadow-lg', 'shadow-emerald-500/20');
+      } else {
+        btnElement.classList.remove('active');
+        btnElement.classList.add('bg-white/5', 'text-gray-300', 'border', 'border-white/10');
+        btnElement.classList.remove('bg-gradient-to-r', 'from-emerald-600', 'to-teal-600', 'text-white', 'shadow-lg', 'shadow-emerald-500/20');
+      }
+    });
+
+    // Check if View Transitions API is supported
+    const supportsViewTransitions = 'startViewTransition' in document;
+
+    const updateCards = () => {
+      skillCards.forEach((card, index) => {
+        const cardElement = card as HTMLElement;
+        const cardCategory = cardElement.dataset.category;
+
+        if (category === 'all' || cardCategory === category) {
+          // Show card
+          cardElement.classList.remove('hidden');
+          cardElement.classList.add('show');
+        } else {
+          // Hide card
+          cardElement.classList.add('hidden');
+          cardElement.classList.remove('show');
+        }
+      });
+    };
+
+    if (supportsViewTransitions) {
+      // Use View Transitions API for smooth animations
+      (document as any).startViewTransition(() => {
+        updateCards();
+      });
+    } else {
+      // Fallback to CSS transitions
+      updateCards();
+    }
+  };
+
+  // Add click handlers to category buttons
+  categoryButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = (btn as HTMLElement).dataset.category || 'all';
+      filterSkills(category);
+    });
+  });
+
+  // Initialize: show all cards on load
+  const initializeCards = () => {
+    skillCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      cardElement.classList.add('show');
+    });
+  };
+
+  // Wait for scroll animation to complete before showing cards
+  setTimeout(() => {
+    initializeCards();
+  }, 500);
+</script>

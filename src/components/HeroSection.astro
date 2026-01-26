@@ -1,0 +1,321 @@
+---
+// HeroSection.astro
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import resume from "../assets/Sufyan_Liaqat_FullStack_Engineer.pdf";
+
+const techStack = ['React', 'Node.js', 'MongoDB', 'TypeScript', 'FastAPI', 'React Native', 'Three.js'];
+const socialLinks = [
+  { icon: Github, href: "https://github.com/sufyan2618", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/sufyanliaqat2", label: "LinkedIn" },
+  { icon: Download, href: resume, label: "Resume", download: true },
+];
+---
+
+<section
+  id="hero"
+  class="relative h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
+  style="perspective: 1000px;"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+      
+      <!-- Left Content -->
+      <div 
+        class="hero-content space-y-5 lg:pl-12 text-center lg:text-left order-2 lg:order-1 opacity-0"
+        data-animate-hero
+      >
+        <div class="space-y-2.5">
+          <div 
+            class="text-emerald-400 font-medium text-xs sm:text-sm tracking-[0.3em] uppercase font-mono"
+          >
+            <span id="typewriter-text"></span><span class="animate-pulse text-emerald-400">_</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display leading-[0.9] tracking-tight">
+            <span 
+              class="hero-name text-white inline-block transition-all duration-300"
+              style="text-shadow: 0 0 40px rgba(16, 185, 129, 0.3), 0 0 80px rgba(16, 185, 129, 0.1); font-weight: 800;"
+            >
+              Sufyan
+            </span>
+            <br />
+            <span 
+              class="hero-lastname bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 inline-block relative transition-all duration-300"
+              style="font-weight: 900; filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));"
+            >
+              Liaqat
+            </span>
+          </h1>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <p class="relative text-sm text-gray-300 leading-relaxed max-w-md mx-auto lg:mx-0 backdrop-blur-sm bg-black/30 p-3.5 rounded-lg border border-white/10">
+            Specialized in <span class="text-emerald-400 font-semibold">MERN Stack</span>, <span class="text-emerald-400 font-semibold">React Native</span>, and <span class="text-emerald-400 font-semibold">FastAPI</span>. 
+            Building scalable, production-ready applications with modern 3D interfaces.
+          </p>
+        </div>
+
+        <!-- Tech Stack Pills -->
+        <div class="flex flex-wrap gap-1.5 justify-center lg:justify-start">
+          {techStack.map((tech) => (
+            <span 
+              class="tech-pill px-2.5 py-0.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[10px] text-gray-300 hover:border-emerald-500 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all duration-300 cursor-pointer"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-2.5 justify-center lg:justify-start">
+          <a
+            href="#projects"
+            class="cta-btn group px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-full font-semibold text-white text-sm transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105"
+          >
+            <span class="flex items-center justify-center gap-2">
+              View My Work
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </a>
+          
+          <a
+            href="#contact"
+            class="cta-btn px-6 py-2.5 border border-white/20 hover:border-emerald-500 hover:bg-emerald-500/10 backdrop-blur-md rounded-full font-semibold text-white text-sm transition-all duration-300 hover:scale-105"
+          >
+            Get In Touch
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex gap-2.5 justify-center lg:justify-start">
+          {socialLinks.map(({ icon: Icon, href, label, download }) => (
+            <a
+              href={href}
+              {...(download ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
+              class="social-link p-2.5 bg-white/5 border border-white/10 rounded-full hover:border-emerald-500 hover:bg-emerald-500/20 text-gray-400 transition-all duration-300"
+              aria-label={label}
+            >
+              <Icon class="w-4 h-4" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Content - Photo with 3D -->
+      <div 
+        class="hero-photo relative order-1 lg:order-2 flex justify-center opacity-0"
+        data-animate-hero
+        data-delay="200"
+        style="perspective: 1000px;"
+      >
+        <div 
+          id="parallax-photo"
+          class="relative w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
+        >
+          <!-- Glassmorphic Circle Background -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 backdrop-blur-xl animate-pulse"></div>
+          
+          <!-- Photo container -->
+          <div class="relative z-10 w-full h-full p-2 cursor-pointer">
+            <div class="w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-emerald-500/20 relative group">
+              <div class="absolute inset-0 bg-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"></div>
+              <img
+                src='./hero.webp'
+                alt="Sufyan Liaqat"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <!-- Floating Orbs -->
+          <div 
+            class="floating-orb-1 absolute -top-4 -right-4 w-10 h-10 bg-emerald-500/30 rounded-full blur-xl" 
+          />
+          <div 
+            class="floating-orb-2 absolute -bottom-8 -left-8 w-14 h-14 bg-teal-500/30 rounded-full blur-xl" 
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div 
+    class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center z-20 opacity-0"
+  >
+    <span class="text-[10px] text-gray-400 mb-2 tracking-widest uppercase">Scroll</span>
+    <ArrowDown class="h-4 w-4 text-emerald-400" />
+  </div>
+</section>
+
+<style>
+  /* Hero animations */
+  [data-animate-hero] {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  [data-animate-hero].visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .hero-photo {
+    transform: translateX(50px) scale(0.8) rotateY(-30deg);
+  }
+
+  .hero-photo.visible {
+    transform: translateX(0) scale(1) rotateY(0);
+    transition: opacity 1s ease-out, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* Name hover effects */
+  .hero-name:hover,
+  .hero-lastname:hover {
+    transform: scale(1.05) translateX(5px);
+  }
+
+  /* Tech pills hover */
+  .tech-pill:hover {
+    transform: scale(1.1) rotate(3deg);
+  }
+
+  /* Social links hover */
+  .social-link:hover {
+    transform: translateY(-5px);
+    color: #34d399;
+  }
+
+  /* Floating orbs animation */
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -20px); }
+  }
+
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-10px, 20px); }
+  }
+
+  .floating-orb-1 {
+    animation: float1 4s ease-in-out infinite;
+  }
+
+  .floating-orb-2 {
+    animation: float2 5s ease-in-out infinite 1s;
+  }
+
+  /* Scroll indicator animation */
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 10px); }
+  }
+
+  .scroll-indicator {
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-indicator.visible {
+    opacity: 1;
+  }
+
+  /* CTA buttons */
+  .cta-btn:active {
+    transform: scale(0.95);
+  }
+</style>
+
+<script>
+  // Typewriter effect
+  class Typewriter {
+    constructor(element: HTMLElement, text: string, delay: number = 500) {
+      this.element = element;
+      this.text = text;
+      this.delay = delay;
+      this.charIndex = 0;
+      
+      setTimeout(() => {
+        this.type();
+      }, delay);
+    }
+
+    type() {
+      if (this.charIndex < this.text.length) {
+        this.element.textContent += this.text.charAt(this.charIndex);
+        this.charIndex++;
+        setTimeout(() => this.type(), 100);
+      }
+    }
+
+    element: HTMLElement;
+    text: string;
+    delay: number;
+    charIndex: number;
+  }
+
+  // Initialize typewriter
+  const typewriterElement = document.getElementById('typewriter-text');
+  if (typewriterElement) {
+    new Typewriter(typewriterElement, 'Full-Stack Developer', 500);
+  }
+
+  // Hero section animations
+  const heroElements = document.querySelectorAll('[data-animate-hero]');
+  
+  heroElements.forEach((element) => {
+    const el = element as HTMLElement;
+    const delay = el.dataset.delay || '0';
+    
+    setTimeout(() => {
+      el.classList.add('visible');
+    }, parseInt(delay));
+  });
+
+  // Show scroll indicator after delay
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (scrollIndicator) {
+    setTimeout(() => {
+      scrollIndicator.classList.add('visible');
+    }, 2000);
+  }
+
+  // Parallax effect on scroll
+  let ticking = false;
+  const parallaxPhoto = document.getElementById('parallax-photo');
+
+  function updateParallax() {
+    const scrolled = window.scrollY;
+    
+    if (parallaxPhoto) {
+      // Move photo in opposite direction (slower than scroll)
+      const yOffset = scrolled * -0.3;
+      parallaxPhoto.style.transform = `translateY(${yOffset}px)`;
+    }
+    
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
+
+  // Add random rotation to tech pills on hover
+  const techPills = document.querySelectorAll('.tech-pill');
+  techPills.forEach((pill) => {
+    pill.addEventListener('mouseenter', () => {
+      const randomRotation = Math.random() * 10 - 5;
+      (pill as HTMLElement).style.transform = `scale(1.1) rotate(${randomRotation}deg)`;
+    });
+    
+    pill.addEventListener('mouseleave', () => {
+      (pill as HTMLElement).style.transform = '';
+    });
+  });
+</script>

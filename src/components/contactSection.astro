@@ -1,0 +1,498 @@
+---
+// ContactSection.astro
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+  ArrowRight,
+  CheckCircle,
+  Github,
+  Linkedin,
+  Instagram,
+  Facebook
+} from "lucide-react";
+
+const contactInfo = [
+  {
+    icon: Mail,
+    title: "Email",
+    value: "sufyanliaquat58@gmail.com",
+    href: "mailto:sufyanliaquat58@gmail.com"
+  },
+  {
+    icon: Phone,
+    title: "Phone",
+    value: "+92 313 6487106",
+    href: "tel:+923136487106"
+  },
+  {
+    icon: MapPin,
+    title: "Location",
+    value: "Lahore, Punjab, Pakistan",
+    href: "#"
+  }
+];
+
+const socialLinks = [
+  { 
+    icon: Github, 
+    href: "https://github.com/sufyan2618", 
+    label: "GitHub", 
+    color: "hover:text-white"
+  },
+  { 
+    icon: Linkedin, 
+    href: "https://www.linkedin.com/in/sufyanliaqat2", 
+    label: "LinkedIn", 
+    color: "hover:text-blue-400"
+  },
+  { 
+    icon: Instagram, 
+    href: "https://www.instagram.com/sufyan_liaquat1/", 
+    label: "Instagram", 
+    color: "hover:text-pink-400"
+  },
+  { 
+    icon: Facebook, 
+    href: "https://www.facebook.com/sufyan.liaquat.73", 
+    label: "Facebook", 
+    color: "hover:text-blue-500"
+  },
+];
+---
+
+<section 
+  id="contact" 
+  class="relative py-20 px-4 overflow-hidden"
+>
+  <div class="container mx-auto max-w-6xl relative z-10">
+    <!-- Section Header -->
+    <div 
+      class="section-header text-center mb-16 opacity-0"
+      data-animate
+    >
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
+        <span class="text-white">Get In</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"> Touch</span>
+      </h2>
+      
+      <p class="text-gray-300 text-base max-w-2xl mx-auto leading-relaxed">
+        Have a project in mind or want to collaborate? I'm always excited to discuss new opportunities 
+        and bring innovative ideas to life. Let's create something amazing together!
+      </p>
+      
+      <div class="w-20 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mx-auto mt-6"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8 items-start">
+      
+      <!-- Left Side - Contact Info -->
+      <div 
+        class="contact-info space-y-6 opacity-0"
+        data-animate
+        data-delay="200"
+      >
+        <!-- Contact Information Cards -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-white mb-4">Contact Information</h3>
+
+          {contactInfo.map((info, index) => {
+            const Icon = info.icon;
+            return (
+              <div
+                class="contact-card bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-5 hover:border-emerald-600 hover:bg-white/10 transition-all duration-300 opacity-0"
+                data-animate-card
+                data-delay={index * 100}
+              >
+                <div class="flex items-center gap-4">
+                  <!-- Icon Container -->
+                  <div class="p-3 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 shrink-0 shadow-lg shadow-emerald-500/20">
+                    <Icon class="w-5 h-5 text-white" />
+                  </div>
+
+                  <!-- Content -->
+                  <div class="flex-1">
+                    <h4 class="text-base font-semibold text-white mb-1">
+                      {info.title}
+                    </h4>
+                    <a
+                      href={info.href}
+                      class="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-sm"
+                    >
+                      {info.value}
+                    </a>
+                  </div>
+
+                  <ArrowRight class="w-5 h-5 text-gray-600 hover:text-emerald-400 transition-all duration-300" />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- Social Links -->
+        <div class="pt-4">
+          <h4 class="text-base font-semibold text-white mb-4">Connect With Me</h4>
+          <div class="flex gap-3">
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-md hover:border-emerald-600 hover:bg-emerald-600/20 transition-all duration-300 hover:scale-110 ${social.color}`}
+                  aria-label={social.label}
+                >
+                  <Icon class="w-5 h-5 text-gray-400 transition-colors duration-300" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Contact Form -->
+      <div 
+        class="contact-form-wrapper opacity-0"
+        data-animate
+        data-delay="400"
+      >
+        <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 hover:border-teal-600 hover:shadow-lg hover:shadow-teal-500/20 transition-all duration-500">
+            
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <Send class="w-5 h-5 text-emerald-400" />
+              Send a Message
+            </h3>
+
+            <form id="contact-form" class="space-y-5">
+              <!-- Name Input -->
+              <div class="relative">
+                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 backdrop-blur-sm"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <!-- Email Input -->
+              <div class="relative">
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300 backdrop-blur-sm"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <!-- Message Input -->
+              <div class="relative">
+                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300 resize-none backdrop-blur-sm"
+                  placeholder="Hello! I'd love to discuss a project with you..."
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:shadow-lg hover:shadow-emerald-500/40 rounded-md font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
+              >
+                <span id="btn-text">Send Message</span>
+                <Send class="w-5 h-5" id="send-icon" />
+                <div id="loading-spinner" class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin hidden"></div>
+              </button>
+            </form>
+
+            <!-- Success Indicator -->
+            <div class="mt-4 text-center">
+              <div class="inline-flex items-center gap-2 text-xs text-gray-400">
+                <CheckCircle class="w-4 h-4 text-green-400" />
+                Usually responds within 24 hours
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
+</section>
+
+<style>
+  /* Animation states */
+  [data-animate] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  [data-animate].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Contact cards slide from left */
+  .contact-info {
+    transform: translateX(-50px);
+  }
+
+  .contact-info.visible {
+    transform: translateX(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Form slide from right */
+  .contact-form-wrapper {
+    transform: translateX(50px);
+  }
+
+  .contact-form-wrapper.visible {
+    transform: translateX(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Contact card animations */
+  [data-animate-card] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease var(--delay), transform 0.3s ease var(--delay);
+  }
+
+  [data-animate-card].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Toast notification styles */
+  .toast {
+    min-width: 300px;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .toast.success {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  .toast.error {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .toast-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .toast-content {
+    flex: 1;
+    color: white;
+  }
+
+  .toast-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .toast-description {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Gradient fixes */
+  .bg-linear-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
+
+  .bg-linear-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        const delay = target.dataset.delay || '0';
+        
+        setTimeout(() => {
+          target.classList.add('visible');
+        }, parseInt(delay));
+        
+        observer.unobserve(target);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach((element) => {
+    observer.observe(element);
+  });
+
+  // Separate observer for contact cards
+  const cardsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const cards = document.querySelectorAll('[data-animate-card]');
+        cards.forEach((card) => {
+          const cardElement = card as HTMLElement;
+          const delay = cardElement.dataset.delay || '0';
+          cardElement.style.setProperty('--delay', `${delay}ms`);
+          
+          setTimeout(() => {
+            cardElement.classList.add('visible');
+          }, parseInt(delay));
+        });
+        
+        cardsObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const contactInfo = document.querySelector('.contact-info');
+  if (contactInfo) {
+    cardsObserver.observe(contactInfo);
+  }
+
+  // Toast notification system
+  function showToast(title: string, description: string, type: 'success' | 'error' = 'success') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icon = type === 'success' 
+      ? '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="color: rgb(16, 185, 129);"></path></svg>'
+      : '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" style="color: rgb(239, 68, 68);"></path></svg>';
+
+    toast.innerHTML = `
+      ${icon}
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-description">${description}</div>
+      </div>
+    `;
+
+    container.appendChild(toast);
+
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Remove after 5 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => container.removeChild(toast), 300);
+    }, 5000);
+  }
+
+  // Form submission handler
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text') as HTMLElement;
+  const sendIcon = document.getElementById('send-icon') as HTMLElement;
+  const loadingSpinner = document.getElementById('loading-spinner') as HTMLElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Disable button and show loading state
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+      btnText.textContent = 'Sending Message...';
+      sendIcon.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
+
+      // Get form data
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+
+      try {
+        const response = await fetch('https://formspree.io/f/xqabbeyp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          showToast(
+            'Message sent successfully!',
+            "Thank you for reaching out. I'll get back to you within 24 hours.",
+            'success'
+          );
+          form.reset();
+        } else {
+          throw new Error('Failed to send message');
+        }
+      } catch (error) {
+        showToast(
+          'Error sending message',
+          'Please try again later or contact me directly via email.',
+          'error'
+        );
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+        btnText.textContent = 'Send Message';
+        sendIcon.classList.remove('hidden');
+        loadingSpinner.classList.add('hidden');
+      }
+    });
+  }
+</script>
