@@ -142,10 +142,10 @@ const socialLinks = [
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-md hover:border-emerald-600 hover:bg-emerald-600/20 transition-all duration-300 hover:scale-110 ${social.color}`}
+                  class={`p-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-md hover:border-emerald-600 hover:bg-emerald-600/20 transition-all duration-300 hover:scale-110 text-emerald-400 ${social.color}`}
                   aria-label={social.label}
                 >
-                  <Icon class="w-5 h-5 text-gray-400 transition-colors duration-300" />
+                  <Icon size={20} className="transition-colors duration-300" />
                 </a>
               );
             })}
@@ -285,60 +285,92 @@ const socialLinks = [
     transform: translateY(0);
   }
 
-  /* Toast notification styles */
+<style is:global>
+  /* Toast Notification System */
+  #toast-container {
+    perspective: 1000px;
+  }
+
   .toast {
-    min-width: 300px;
-    padding: 1rem 1.5rem;
-    border-radius: 0.5rem;
-    backdrop-filter: blur(12px);
+    min-width: 320px;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 20px 25px -5px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 1rem;
     opacity: 0;
-    transform: translateX(400px);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateX(100%) rotateY(-20deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-bottom: 0.75rem;
   }
 
   .toast.show {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) rotateY(0);
   }
 
   .toast.success {
-    background: rgba(16, 185, 129, 0.2);
-    border-color: rgba(16, 185, 129, 0.3);
+    border-left: 4px solid #10b981;
   }
 
   .toast.error {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: rgba(239, 68, 68, 0.3);
+    border-left: 4px solid #ef4444;
+  }
+
+  .toast-icon-wrapper {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .success .toast-icon-wrapper {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+  }
+
+  .error .toast-icon-wrapper {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
   }
 
   .toast-icon {
-    flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2.5px;
   }
 
   .toast-content {
     flex: 1;
-    color: white;
+    padding-top: 0.25rem;
   }
 
   .toast-title {
-    font-weight: 600;
-    font-size: 0.875rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: #fff;
     margin-bottom: 0.25rem;
+    letter-spacing: 0.01em;
   }
 
   .toast-description {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
   }
 
-  /* Gradient fixes */
+  /* Utility Gradients */
   .bg-linear-to-r {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
   }
@@ -410,12 +442,14 @@ const socialLinks = [
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
     
-    const icon = type === 'success' 
-      ? '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" style="color: rgb(16, 185, 129);"></path></svg>'
-      : '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" style="color: rgb(239, 68, 68);"></path></svg>';
+    const iconSvg = type === 'success' 
+      ? '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+      : '<svg class="toast-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
 
     toast.innerHTML = `
-      ${icon}
+      <div class="toast-icon-wrapper">
+        ${iconSvg}
+      </div>
       <div class="toast-content">
         <div class="toast-title">${title}</div>
         <div class="toast-description">${description}</div>
