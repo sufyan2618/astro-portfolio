@@ -1,0 +1,249 @@
+{
+  "skills": [
+    { "name": "React.js", "category": "frontend", "icon": "react.webp" },
+    { "name": "Next.js", "category": "frontend", "icon": "next.webp" },
+    { "name": "React Native", "category": "frontend", "icon": "react.webp" },
+    { "name": "JavaScript", "category": "frontend", "icon": "javaScript.webp" },
+    { "name": "Redux", "category": "frontend", "icon": "redux.webp" },
+    { "name": "TypeScript", "category": "frontend", "icon": "typeScript.webp" },
+    { "name": "Tailwind CSS", "category": "frontend", "icon": "tailwind.webp" },
+    { "name": "HTML", "category": "frontend", "icon": "html.webp" },
+    { "name": "CSS", "category": "frontend", "icon": "css.webp" },
+    { "name": "Zustand", "category": "frontend", "icon": "zustand.svg" },
+    { "name": "Node.js", "category": "backend", "icon": "node.webp" },
+    { "name": "Express.js", "category": "backend", "icon": "express.webp" },
+    { "name": "FastAPI", "category": "backend", "icon": "fastapi.webp" },
+    { "name": "Python", "category": "backend", "icon": "python.webp" },
+    { "name": "MongoDB", "category": "backend", "icon": "mongodb.webp" },
+    { "name": "PostgreSQL", "category": "backend", "icon": "postgres.webp" },
+    { "name": "GraphQL", "category": "backend", "icon": "GraphQL.webp" },
+    { "name": "Redis", "category": "backend", "icon": "redis.webp" },
+    { "name": "Socket.io", "category": "backend", "icon": "socket.io.webp" },
+    { "name": "Bull", "category": "backend", "icon": "bull.webp" },
+    { "name": "SQLAlchemy", "category": "tools", "icon": "SQLAlchemy.webp" },
+    { "name": "Stripe", "category": "backend", "icon": "stripe.webp" },
+    { "name": "Docker", "category": "cloud", "icon": "Docker.webp" },
+    { "name": "Kubernetes", "category": "cloud", "icon": "kubernetes.webp" },
+    { "name": "NGINX", "category": "cloud", "icon": "nginx.webp" },
+    { "name": "GitHub Actions", "category": "cloud", "icon": "github-actions.webp" },
+    { "name": "Digital Ocean", "category": "cloud", "icon": "Digital Ocean.webp" },
+    { "name": "AWS", "category": "cloud", "icon": "AWS.webp" },
+    { "name": "Supabase", "category": "cloud", "icon": "supabase-logo-icon.webp" },
+    { "name": "Firebase", "category": "cloud", "icon": "firebase.webp" },
+    { "name": "Git", "category": "tools", "icon": "git.webp" },
+    { "name": "GitHub", "category": "tools", "icon": "github.webp" },
+    { "name": "VS Code", "category": "tools", "icon": "vs-code.webp" },
+    { "name": "Postman", "category": "tools", "icon": "postman.webp" },
+    { "name": "Swagger", "category": "tools", "icon": "swagger.webp" },
+    { "name": "Jira", "category": "tools", "icon": "Jira.webp" },
+    { "name": "Convex", "category": "tools", "icon": "convex.webp" },
+    { "name": "Gemini AI", "category": "tools", "icon": "gemini.webp" }
+  ],
+  "skillCategories": [
+    { "id": "all", "name": "All Skills", "icon": "Code" },
+    { "id": "frontend", "name": "Frontend", "icon": "Code" },
+    { "id": "backend", "name": "Backend", "icon": "Database" },
+    { "id": "cloud", "name": "Cloud & DevOps", "icon": "Cloud" },
+    { "id": "tools", "name": "Tools & Libraries", "icon": "Wrench" }
+  ],
+  "experiences": [
+    {
+      "id": 1,
+      "company": "OrcaOps",
+      "logo": "/orcaops-logo.webp",
+      "role": "Associate Software Engineer",
+      "location": "Remote",
+      "duration": "November 2025 - Present",
+      "startDate": "Nov 2025",
+      "endDate": "Present",
+      "period": "2 months",
+      "type": "Full-time",
+      "description": "Building a comprehensive construction project management platform using modern backend technologies and cross-platform mobile development. Focused on performance optimization, real-time collaboration features, and scalable architecture for enterprise-level project tracking and team coordination.",
+      "responsibilities": [
+        "Architected and developed core features of a construction project management system using FastAPI, PostgreSQL, and SQLAlchemy with task tracking, milestone management, and team collaboration workflows",
+        "Eliminated N+1 query issues through SQLAlchemy eager loading and relationship optimization, reducing database query execution time by 65% and improving overall system responsiveness",
+        "Built high-performance streaming platform with Next.js Server-Side Rendering (SSR), implementing efficient data fetching and link aggregation, resulting in 40% increase in user retention through faster page loads",
+        "Developed React Native mobile application for project management using Expo, enabling on-site access to project data with offline-first architecture and seamless synchronization",
+        "Implemented production-ready push notification system using Firebase Cloud Messaging (FCM) for real-time project updates, boosting team communication efficiency by 50%",
+        "Integrated Celery with RabbitMQ for asynchronous task processing, handling background jobs for report generation, email notifications, and data synchronization",
+        "Designed and implemented RESTful APIs with comprehensive documentation using FastAPI's automatic OpenAPI generation, improving developer onboarding and integration time"
+      ],
+      "technologies": ["FastAPI", "PostgreSQL", "SQLAlchemy", "React", "Material-UI", "Next.js", "React Native", "Expo", "Celery", "RabbitMQ", "Firebase", "TypeScript", "Python", "Docker", "Kubernetes", "Jira"],
+      "achievements": [
+        "Reduced database query execution time by 65% through advanced SQLAlchemy optimization techniques",
+        "Increased streaming platform user retention by 40% with Next.js SSR implementation",
+        "Improved team communication efficiency by 50% with real-time FCM notification system",
+        "Successfully delivered cross-platform project management solution serving construction teams across web and mobile"
+      ],
+      "isActive": true,
+      "companyType": "Construction Tech / SaaS"
+    },
+    {
+      "id": 2,
+      "company": "BugMonks",
+      "logo": "/bug-monks.jpg",
+      "role": "Full Stack Engineer",
+      "location": "Onsite - Lahore, Pakistan",
+      "duration": "April 2025 - Present",
+      "startDate": "Apr 2025",
+      "endDate": "Present",
+      "period": "8 months",
+      "type": "Full-time",
+      "description": "Working on multiple enterprise-level SaaS projects, contributing to both frontend and backend development. Built production-grade applications serving 2000+ active users with focus on scalability, performance optimization, and modern architecture patterns.",
+      "responsibilities": [
+        "Developed a full-stack real estate analysis platform that scrapes and analyzes rental data from apartments.com, calculating Cap Rate, DSCR, CFBT, and other key financial metrics using Bull queues for background processing",
+        "Built a LinkedIn email marketing tool with web scraping capabilities and bulk campaign automation for lead generation",
+        "Implemented secure authentication systems, payment integrations (Stripe), and interactive admin dashboards serving 2k+ active users",
+        "Optimized MongoDB and PostgreSQL database queries, reducing API response times by 30% through indexing and query optimization",
+        "Deployed applications using Docker, NGINX reverse proxy, and CI/CD pipelines on Digital Ocean and AWS",
+        "Collaborated with cross-functional teams using Agile methodologies and version control with Git/GitHub"
+      ],
+      "technologies": ["React", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "FastAPI", "Bull", "GraphQL", "Redis", "TypeScript", "Docker", "NGINX", "AWS", "Digital Ocean", "Stripe", "Git", "Postman", "Swagger", "Jira"],
+      "achievements": [
+        "Successfully delivered multiple production-grade features within tight deadlines for enterprise SaaS platforms",
+        "Reduced API response times by 30% through database optimization and caching strategies",
+        "Built applications serving 2000+ active users with 99.9% uptime",
+        "Implemented scalable microservices architecture using Node.js and FastAPI"
+      ],
+      "isActive": false,
+      "companyType": "SaaS Development"
+    },
+    {
+      "id": 3,
+      "company": "Freelance",
+      "logo": "/fiverr.webp",
+      "role": "Full Stack Developer",
+      "location": "Remote",
+      "duration": "December 2024 - April 2025",
+      "startDate": "Dec 2024",
+      "endDate": "Apr 2025",
+      "period": "5 months",
+      "type": "Contract",
+      "description": "Delivered end-to-end web applications for multiple clients, focusing on e-commerce solutions, AI-powered SaaS platforms, and production-grade deployments with modern DevOps practices.",
+      "responsibilities": [
+        "Developed a feature-rich e-commerce web application with user authentication, shopping cart, order management, and integrated payment system using Stripe and MongoDB",
+        "Built an AI-powered SaaS platform that conducts user interviews via chat and generates personalized biographies using Gemini API and Node.js backend",
+        "Implemented responsive UI/UX using React.js, Tailwind CSS, and modern design patterns for optimal user experience",
+        "Deployed production-grade applications on Digital Ocean with Docker containerization, NGINX reverse proxy, and automated CI/CD pipelines using GitHub Actions",
+        "Integrated third-party APIs including payment gateways, AI services, and cloud storage solutions",
+        "Managed full project lifecycle from requirements gathering to deployment and maintenance"
+      ],
+      "technologies": ["React", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Docker", "NGINX", "Tailwind CSS", "Stripe", "Gemini API", "Digital Ocean", "GitHub Actions", "Redis", "Cloudinary", "EJS"],
+      "achievements": [
+        "Successfully delivered multiple client projects on time with 100% client satisfaction",
+        "Implemented production-ready CI/CD pipelines reducing deployment time by 70%",
+        "Built scalable applications handling thousands of concurrent users",
+        "Gained hands-on experience with modern DevOps practices and cloud infrastructure"
+      ],
+      "isActive": false,
+      "companyType": "Freelance/Contract"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Real Estate Property Analyzer",
+      "description": "Comprehensive real estate analysis platform that calculates key investment metrics including CFBT, Cash on Cash Return, DSCR, and Purchase Amount. Features automated rent comparison module that scrapes apartments.com data to provide competitive rental pricing insights for property investments.",
+      "image": "/projects/real-estate-analyzer.webp",
+      "tags": ["Node.js", "Bull Queue", "GPT API", "MongoDB", "React", "Web Scraping", "Real Estate"],
+      "demoUrl": "http://152.70.131.240/",
+      "githubUrl": "https://github.com/sufyan2618",
+      "featured": true,
+      "category": "Full Stack / Real Estate Tech"
+    },
+    {
+      "id": 2,
+      "title": "AI Stylist",
+      "description": "Personalized Fashion Assistant with AI-powered recommendations, virtual try-on, and outfit generation. Built interactive questionnaires delivering personalized style recommendations via fine-tuned LLMs, integrated virtual try-on technology, and outfit combination generation.",
+      "image": "/projects/ai-stylist.webp",
+      "tags": ["MERN", "Tanstack Query", "ChatGPT API", "fal.ai", "Freepik API", "JWT", "Stripe"],
+      "demoUrl": "http://18.211.196.168/",
+      "githubUrl": "https://github.com/sufyan2618",
+      "featured": true,
+      "category": "AI / Full Stack"
+    },
+    {
+      "id": 3,
+      "title": "Online-Identity",
+      "description": "Create stunning portfolios with Online-Identity, a full-stack MERN application featuring user authentication, data caching, dynamic portfolio creation, and real-time updates.",
+      "image": "/projects/portfolio_creator.webp",
+      "tags": ["MERN", "Redis", "Github Action", "Nginx", "Digital Ocean"],
+      "demoUrl": "https://online-identity.tech",
+      "githubUrl": "https://github.com/sufyan2618/portfolio_creator",
+      "featured": true,
+      "category": "Full Stack / Dev Ops"
+    },
+    {
+      "id": 4,
+      "title": "AI Voice Assistant",
+      "description": "Voice-activated AI assistant web app built with MERN stack featuring natural speech interaction and real-time responses.",
+      "image": "/projects/assistant.webp",
+      "tags": ["React", "Node.js", "MongoDB", "Gemini AI", "Web Speech API"],
+      "demoUrl": "https://novavoices.sufyanliaqat.me",
+      "githubUrl": "https://github.com/sufyan2618/Nova-Voices",
+      "featured": true,
+      "category": "AI / MERN Stack"
+    },
+    {
+      "id": 5,
+      "title": "Devnity AI Code Editor",
+      "description": "AI-powered Code Editor built with React and Next.js, having Convex for database and Gemini AI for error correction",
+      "image": "/projects/editor.webp",
+      "tags": ["React", "Next.js", "Tailwind CSS", "Convex", "Gemini AI"],
+      "demoUrl": "https://devnity-livid.vercel.app/",
+      "githubUrl": "https://github.com/sufyan2618/Devnity",
+      "featured": true,
+      "category": "AI / Web Development"
+    },
+    {
+      "id": 6,
+      "title": "Linkit: A Chat App",
+      "description": "Real-time chat application built with React, Node.js, and Socket.IO featuring user authentication, file sharing.",
+      "image": "/projects/chatapp.webp",
+      "tags": ["React", "Tailwind CSS", "Node.js", "Socket.IO", "Express"],
+      "demoUrl": "https://chat-app-mv76.onrender.com",
+      "githubUrl": "https://github.com/sufyan2618/Chat-App",
+      "featured": true,
+      "category": "Web Development"
+    },
+    {
+      "id": 7,
+      "title": "Wrap VPN",
+      "description": "Wrap VPN is a secure, cross-platform VPN app built with Flutter, featuring OVPN support, Supabase authentication, and a custom Android VPN engine.",
+      "image": "/projects/vpn.webp",
+      "tags": ["Flutter", "Dart", "Supabase", "OVPN", "Android", "iOS"],
+      "demoUrl": "https://github.com/sufyan2618/vpn_app",
+      "githubUrl": "https://github.com/sufyan2618/vpn_app",
+      "featured": true,
+      "category": "Cross-Platform App / Flutter"
+    },
+    {
+      "id": 8,
+      "title": "E-commerce with AI Chatbot",
+      "description": "Full-featured e-commerce platform with user authentication, admin panel and a custom chatbot built with NLP.js.",
+      "image": "/projects/lals.webp",
+      "tags": ["React", "Node.js", "Express", "MongoDB", "NLP.js"],
+      "demoUrl": "https://lals.sufyanliaqat.me",
+      "githubUrl": "https://github.com/sufyan2618/Lals",
+      "featured": true,
+      "category": "Full Stack / AI"
+    }
+  ],
+  "aboutSkills": [
+    {
+      "icon": "Code",
+      "title": "Full-Stack Development",
+      "description": "Building scalable web applications with MERN stack, serving 2000+ active users."
+    },
+    {
+      "icon": "Smartphone",
+      "title": "Mobile Development",
+      "description": "Cross-platform mobile apps using React Native and Expo with modern UI/UX."
+    },
+    {
+      "icon": "Brain",
+      "title": "DevOps & Cloud",
+      "description": "Deploying production applications with Docker, CI/CD, and cloud infrastructure."
+    }
+  ]
+}
