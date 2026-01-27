@@ -80,11 +80,15 @@ const navItems = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-emerald-400 hover:border-emerald-600 transition-all duration-300 z-50"
+      class="md:hidden p-2 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-emerald-400 hover:border-emerald-600 transition-all duration-300 z-50 flex items-center justify-center w-10 h-10"
       aria-label="Toggle Menu"
     >
-      <Menu id="menu-icon" size={24} />
-      <X id="close-icon" size={24} class="hidden" />
+      <span id="menu-icon-wrapper" class="flex items-center justify-center">
+        <Menu size={24} />
+      </span>
+      <span id="close-icon-wrapper" class="hidden flex items-center justify-center">
+        <X size={24} />
+      </span>
     </button>
   </div>
 </nav>
@@ -268,8 +272,8 @@ const navItems = [
   // Mobile menu handling
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
+  const menuIconWrapper = document.getElementById("menu-icon-wrapper");
+  const closeIconWrapper = document.getElementById("close-icon-wrapper");
   const mobileNavItems = document.querySelectorAll(".mobile-nav-item");
   let isMenuOpen = false;
 
@@ -278,12 +282,12 @@ const navItems = [
 
     if (isMenuOpen) {
       mobileMenu?.classList.add("open");
-      menuIcon?.classList.add("hidden");
-      closeIcon?.classList.remove("hidden");
+      menuIconWrapper?.classList.add("hidden");
+      closeIconWrapper?.classList.remove("hidden");
     } else {
       mobileMenu?.classList.remove("open");
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
+      menuIconWrapper?.classList.remove("hidden");
+      closeIconWrapper?.classList.add("hidden");
     }
   });
 
@@ -295,8 +299,8 @@ const navItems = [
         // Close menu
         isMenuOpen = false;
         mobileMenu?.classList.remove("open");
-        menuIcon?.classList.remove("hidden");
-        closeIcon?.classList.add("hidden");
+        menuIconWrapper?.classList.remove("hidden");
+        closeIconWrapper?.classList.add("hidden");
 
         // Scroll after a short delay
         setTimeout(() => {

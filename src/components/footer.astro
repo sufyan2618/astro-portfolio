@@ -26,10 +26,10 @@ const currentYear = new Date().getFullYear();
     <div class="footer-content" data-animate>
       
       <!-- Main Footer Content -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
         
         <!-- Brand Section -->
-        <div class="space-y-4">
+        <div class="space-y-4 flex flex-col items-center md:items-start">
           <div class="flex items-center gap-3">
             <div class="p-2.5 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/20">
               <Code class="w-6 h-6 text-white" />
@@ -50,7 +50,7 @@ const currentYear = new Date().getFullYear();
 
         <!-- Quick Links -->
         <div>
-          <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+          <h3 class="text-white font-semibold mb-4 flex items-center justify-center md:justify-start gap-2">
             <div class="w-1 h-5 bg-gradient-to-b from-emerald-600 to-teal-600 rounded-full"></div>
             Quick Links
           </h3>
@@ -59,7 +59,7 @@ const currentYear = new Date().getFullYear();
               <li>
                 <a
                   href={link.href}
-                  class="text-gray-300 hover:text-emerald-400 transition-all duration-300 text-sm flex items-center gap-2 group"
+                  class="text-gray-300 hover:text-emerald-400 transition-all duration-300 text-sm flex items-center justify-center md:justify-start gap-2 group"
                   aria-label={`Go to ${link.name} section`}
                 >
                   <span class="w-0 h-0.5 bg-emerald-500 group-hover:w-4 transition-all duration-300 rounded-full"></span>
@@ -72,11 +72,11 @@ const currentYear = new Date().getFullYear();
 
         <!-- Connect Section -->
         <div>
-          <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+          <h3 class="text-white font-semibold mb-4 flex items-center justify-center md:justify-start gap-2">
             <div class="w-1 h-5 bg-gradient-to-b from-teal-600 to-emerald-600 rounded-full"></div>
             Connect
           </h3>
-          <div class="flex gap-3 mb-4">
+          <div class="flex justify-center md:justify-start gap-3 mb-4">
             {socialLinks.map((social) => {
               const Icon = social.icon;
               return (
@@ -125,9 +125,9 @@ const currentYear = new Date().getFullYear();
         <!-- Made with love -->
         <div class="flex items-center gap-2 text-sm text-gray-400">
           <span>Crafted with</span>
-          <Heart class="w-4 h-4 text-red-400 animate-pulse" />
+          <Heart size={16} color="#ef4444" fill="#ef4444" className="animate-pulse" />
           <span>and</span>
-          <Coffee class="w-4 h-4 text-amber-400" />
+          <Coffee size={16} color="#d97706" fill="#d97706" />
           <span>in Lahore</span>
         </div>
 

@@ -15,7 +15,7 @@ const socialLinks = [
 
 <section
   id="hero"
-  class="relative h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-26 pb-16 lg:pt-24"
   style="perspective: 1000px;"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -144,10 +144,10 @@ const socialLinks = [
 
   <!-- Scroll indicator -->
   <div 
-    class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:flex flex-col items-center z-20"
+    class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
   >
     <span class="text-[10px] text-gray-400 mb-2 tracking-widest uppercase">Scroll</span>
-    <ArrowDown class="h-4 w-4 text-emerald-400" />
+    <ArrowDown className="h-4 w-4 text-emerald-400" color="#34d399" />
   </div>
 </section>
 
