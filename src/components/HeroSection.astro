@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 import resume from "../assets/Sufyan_Liaqat_FullStack_Engineer.pdf";
 import heroImg from "../assets/hero.webp"; 
 
-const techStack = ['React', 'Node.js', 'MongoDB', 'TypeScript', 'FastAPI', 'React Native', 'Three.js'];
+const techStack = ['React', 'Node.js', 'MongoDB', 'TypeScript', 'FastAPI', 'React Native', 'Next.js', 'Three.js'];
 const socialLinks = [
   { icon: Github, href: "https://github.com/sufyan2618", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/sufyanliaqat2", label: "LinkedIn" },
@@ -15,7 +15,7 @@ const socialLinks = [
 
 <section
   id="hero"
-  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-26 pb-16 lg:pt-24"
+  class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-32 lg:pt-24 lg:pb-16"
   style="perspective: 1000px;"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -90,7 +90,7 @@ const socialLinks = [
         </div>
 
         <!-- Social Links -->
-        <div class="flex gap-2.5 justify-center lg:justify-start">
+        <div class="flex gap-2.5 justify-center lg:justify-start mb-12 lg:mb-0">
           {socialLinks.map(({ icon: Icon, href, label, download }) => (
             <a
               href={href}
@@ -112,6 +112,7 @@ const socialLinks = [
         <div 
           id="parallax-photo"
           class="relative w-52 h-52 sm:w-64 sm:h-64 lg:w-80 lg:h-80"
+          style="will-change: transform;"
         >
           <!-- Glassmorphic Circle Background -->
           <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 backdrop-blur-xl animate-pulse"></div>
@@ -144,7 +145,7 @@ const socialLinks = [
 
   <!-- Scroll indicator -->
   <div 
-    class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
+    class="scroll-indicator absolute bottom-4 lg:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
   >
     <span class="text-[10px] text-gray-400 mb-2 tracking-widest uppercase">Scroll</span>
     <ArrowDown className="h-4 w-4 text-emerald-400" color="#34d399" />
@@ -152,6 +153,11 @@ const socialLinks = [
 </section>
 
 <style>
+  #hero {
+    content-visibility: auto;
+    contain-intrinsic-size: 100vh;
+  }
+
   /* New CSS Animations for LCP */
   @keyframes heroFadeIn {
     from {
@@ -288,6 +294,9 @@ const socialLinks = [
   const parallaxPhoto = document.getElementById('parallax-photo');
 
   function updateParallax() {
+    // Disable parallax on mobile for performance
+    if (window.innerWidth < 768) return;
+
     const scrolled = window.scrollY;
     
     if (parallaxPhoto) {
