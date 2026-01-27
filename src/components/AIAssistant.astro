@@ -1,6 +1,7 @@
 ---
-// AIAssistant.astro
 import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, Maximize2, Cpu } from "lucide-react";
+
+const BACKEND_API_URL = import.meta.env.PUBLIC_BACKEND_API_URL;
 ---
 
 <!-- Floating Trigger Button -->
@@ -18,6 +19,7 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
   id="ai-chat"
   class="fixed bottom-6 right-6 z-50 bg-black/90 backdrop-blur-xl border border-emerald-500/30 rounded-lg shadow-[0_0_50px_rgba(16,185,129,0.15)] flex-col overflow-hidden font-mono hidden"
   style="width: min(90vw, 400px); height: 500px;"
+  data-api-url={BACKEND_API_URL}
 >
   <!-- Header -->
   <div 
@@ -371,7 +373,8 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
     showTypingIndicator();
 
     try {
-      const response = await fetch(import.meta.env.PUBLIC_BACKEND_API_URL, {
+      const apiUrl = chatBox?.dataset.apiUrl || '';
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: message }),
