@@ -4,6 +4,10 @@ import { MessageSquare, X, Send, Bot, User, Terminal, ChevronRight, Minimize2, M
 const BACKEND_API_URL = import.meta.env.PUBLIC_BACKEND_API_URL;
 ---
 
+<!-- Markdown Support -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" is:inline></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js" is:inline></script>
+
 <!-- Floating Trigger Button -->
 <button
   id="ai-trigger"
@@ -241,6 +245,11 @@ const BACKEND_API_URL = import.meta.env.PUBLIC_BACKEND_API_URL;
         this.element.textContent += this.text.charAt(this.index);
         this.index++;
         setTimeout(() => this.type(), this.speed);
+      } else {
+        // Once typing is done, parse the full markdown
+        if (typeof (window as any).marked !== 'undefined') {
+          this.element.innerHTML = (window as any).DOMPurify.sanitize((window as any).marked.parse(this.text));
+        }
       }
     }
   }
@@ -270,13 +279,15 @@ const BACKEND_API_URL = import.meta.env.PUBLIC_BACKEND_API_URL;
         : 'bg-emerald-900/10 text-emerald-100 border-emerald-500/20 rounded-tl-none'
     }`;
 
-    const textContent = document.createElement('p');
-    textContent.className = 'whitespace-pre-wrap leading-relaxed';
+    const textContent = document.createElement('div');
+    textContent.className = 'markdown-content leading-relaxed';
     
     if (msg.type === 'bot' && msg.isTyping) {
       new Typewriter(textContent, msg.text);
     } else {
-      textContent.textContent = msg.text;
+      textContent.innerHTML = typeof (window as any).marked !== 'undefined' 
+        ? (window as any).DOMPurify.sanitize((window as any).marked.parse(msg.text))
+        : msg.text;
     }
 
     textDiv.appendChild(textContent);
