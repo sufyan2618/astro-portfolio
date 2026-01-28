@@ -13,7 +13,7 @@ function processData(rawData) {
     const result = {};
 
     // Define which exports we want to include in the JSON
-    const includeKeys = ['skills', 'skillCategories', 'experiences', 'projects', 'aboutSkills'];
+    const includeKeys = ['skills', 'skillCategories', 'experiences', 'projects', 'aboutSkills', 'services'];
 
     includeKeys.forEach(key => {
         if (rawData[key]) {

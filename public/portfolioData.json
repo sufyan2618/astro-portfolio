@@ -568,5 +568,79 @@
       "title": "DevOps & Cloud",
       "description": "Deploying production applications with Docker, CI/CD, and cloud infrastructure."
     }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Full-Stack Web Development",
+      "description": "End-to-end web applications built with MERN (MongoDB, Express, React, Node.js) and PERN (PostgreSQL) stacks. Specializing in highly scalable SaaS platforms and feature-rich administrative dashboards.",
+      "icon": "PanelsTopLeft",
+      "tags": [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Next.js & FastAPI Solutions",
+      "description": "High-performance websites and ultra-fast APIs. Leveraging Next.js for superior SSR/SSG and FastAPI for high-concurrency backend services with comprehensive OpenAPI documentation.",
+      "icon": "Server",
+      "tags": [
+        "Next.js",
+        "FastAPI",
+        "Python",
+        "TypeScript"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Mobile App Development",
+      "description": "Cross-platform mobile applications using React Native and Expo. Focused on offline-first architectures, real-time synchronization, and native-like performance for iOS and Android.",
+      "icon": "Smartphone",
+      "tags": [
+        "React Native",
+        "Expo",
+        "Mobile UI",
+        "FCM"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Applied AI Integration",
+      "description": "Infusing applications with intelligent features using LangChain, LangGraph, and Gemini/GPT APIs. Building RAG systems, AI agents, and custom chatbots to automate complex workflows.",
+      "icon": "Brain",
+      "tags": [
+        "LangChain",
+        "LLMs",
+        "Vector DBs",
+        "AI Agents"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Cloud & DevOps Services",
+      "description": "Production-ready deployments using Docker, Kubernetes, and CI/CD pipelines. Expert in configuring NGINX, managing AWS/DigitalOcean infrastructure, and implementing automated workflows.",
+      "icon": "Cloud",
+      "tags": [
+        "Docker",
+        "K8s",
+        "CI/CD",
+        "AWS"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Performance & API Optimization",
+      "description": "Revitalizing slow applications. Optimizing complex SQL/NoSQL queries, implementing caching strategies with Redis, and fine-tuning frontend performance for 90+ Lighthouse scores.",
+      "icon": "Zap",
+      "tags": [
+        "Redis",
+        "Optimization",
+        "SQL Tuning",
+        "Performance"
+      ]
+    }
   ]
 }

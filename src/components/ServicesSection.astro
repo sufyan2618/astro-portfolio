@@ -1,0 +1,126 @@
+---
+// ServicesSection.astro
+import { services } from "../lib/data";
+---
+
+<section 
+  id="services" 
+  class="relative min-h-screen py-24 overflow-hidden"
+>
+  <div class="container mx-auto max-w-7xl relative z-10 px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="section-header text-center mb-20">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading mb-4">
+        <span class="text-white">Specialized</span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500"> Services</span>
+      </h2>
+      
+      <p class="text-gray-200 text-base max-w-2xl mx-auto leading-relaxed">
+        Bridging the gap between your complex business requirements and high-performance digital solutions
+      </p>
+      
+      <div class="w-20 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full mx-auto mt-6"></div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {services.map((service, index) => {
+        const Icon = service.icon;
+        return (
+          <div 
+            class="service-card group relative p-8 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/10 h-full flex flex-col"
+            style={`--delay: ${index * 100}ms`}
+          >
+            <!-- Background Glow -->
+            <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl opacity-0 group-hover:opacity-20 transition duration-500"></div>
+
+            <div class="relative z-10 flex flex-col h-full">
+              <!-- Icon Container -->
+              <div class={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}>
+                <Icon size={28} />
+              </div>
+
+              <!-- Content -->
+              <h3 class="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">
+                {service.title}
+              </h3>
+              
+              <p class="text-gray-300 text-sm leading-relaxed mb-6 flex-grow">
+                {service.description}
+              </p>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                {service.tags.map(tag => (
+                  <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] text-gray-400 group-hover:text-teal-400 group-hover:border-teal-400/30 border border-transparent transition-all">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section-header {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .service-card {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out var(--delay) forwards;
+  }
+
+  /* Glassmorphism subtle details */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+      rgba(16, 185, 129, 0.06),
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Hover light effect
+  const cards = document.querySelectorAll('.service-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e: any) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+      (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+</script>
