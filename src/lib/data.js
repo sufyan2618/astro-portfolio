@@ -71,7 +71,7 @@ export const experiences = [
     id: 1,
     company: "OrcaOps",
     logo: "/orcaops-logo.webp",
-    role: "Associate Software Engineer",
+    role: "Software Engineer",
     location: "Remote",
     duration: "November 2025 - Present",
     startDate: "Nov 2025",
@@ -161,8 +161,19 @@ export const experiences = [
 ];
 
 export const projects = [
-  {
+    {
     id: 1,
+    title: "FairGig - Gig Worker Income & Rights Platform",
+    description: "Microservices-based labour-rights platform with 6 independent services (Auth, Earnings, Grievance, Analytics, Anomaly, Certificate) supporting multiple user roles. Includes Groq LLaMA AI chatbot, bilingual (Urdu/English) voice-to-shift logging, anomaly detection via Z-score/IQR, city-wide median comparisons, advocate analytics dashboard, and printable income certificates for legal and financial use.",
+    image: "/projects/fairgig.webp",
+    tags: ["React", "FastAPI", "Node.js", "PostgreSQL", "MongoDB", "Groq AI", "Microservices"],
+    demoUrl: "https://github.com/sufyan2618/FairGig",
+    githubUrl: "https://github.com/sufyan2618/FairGig",
+    featured: true,
+    category: "Microservices / AI / Full Stack"
+  },
+  {
+    id: 2,
     title: "Real Estate Property Analyzer",
     description: "Comprehensive real estate analysis platform that calculates key investment metrics including CFBT, Cash on Cash Return, DSCR, and Purchase Amount. Features automated rent comparison module that scrapes apartments.com data to provide competitive rental pricing insights for property investments.",
     image: "/projects/real-estate-analyzer.webp",
@@ -173,7 +184,7 @@ export const projects = [
     category: "Full Stack / Real Estate Tech"
   },
   {
-    id: 2,
+    id: 3,
     title: "AI Stylist",
     description: "Personalized Fashion Assistant with AI-powered recommendations, virtual try-on, and outfit generation. Built interactive questionnaires delivering personalized style recommendations via fine-tuned LLMs, integrated virtual try-on technology, and outfit combination generation.",
     image: "/projects/ai-stylist.webp",
@@ -184,7 +195,7 @@ export const projects = [
     category: "AI / Full Stack"
   },
   {
-    id: 3,
+    id: 4,
     title: "Online-Identity",
     description: "Create stunning portfolios with Online-Identity, a full-stack MERN application featuring user authentication, data caching, dynamic portfolio creation, and real-time updates.",
     image: "/projects/portfolio_creator.webp",
@@ -195,7 +206,7 @@ export const projects = [
     category: "Full Stack / Dev Ops"
   },
   {
-    id: 4,
+    id: 5,
     title: "AI Voice Assistant",
     description: "Voice-activated AI assistant web app built with MERN stack featuring natural speech interaction and real-time responses.",
     image: "/projects/assistant.webp",
@@ -206,7 +217,7 @@ export const projects = [
     category: "AI / MERN Stack"
   },
   {
-    id: 5,
+    id: 6,
     title: "Devnity AI Code Editor",
     description: "AI-powered Code Editor built with React and Next.js, having Convex for database and Gemini AI for error correction ",
     image: "/projects/editor.webp",
@@ -218,7 +229,7 @@ export const projects = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "Linkit: A Chat App",
     description: " Real-time chat application built with React, Node.js, and Socket.IO featuring user authentication, file sharing .",
     image: "/projects/chatapp.webp",
@@ -229,7 +240,7 @@ export const projects = [
     category: "Web Development"
   },
   {
-    id: 7,
+    id: 8,
     title: "Wrap VPN",
     description: "Wrap VPN is a secure, cross-platform VPN app built with Flutter, featuring OVPN support, Supabase authentication, and a custom Android VPN engine.",
     image: "/projects/vpn.webp",
@@ -240,7 +251,7 @@ export const projects = [
     category: "Cross-Platform App / Flutter"
   },
   {
-    id: 8,
+    id: 9,
     title: "E-commerce with AI Chatbot",
     description: "Full-featured e-commerce platform with user authentication, admin panel and a custom chatbot built with NLP.js.",
     image: "/projects/lals.webp",
@@ -250,6 +261,7 @@ export const projects = [
     featured: true,
     category: "Full Stack / AI"
   },
+
 ];
 
 export const aboutSkills = [
@@ -297,14 +309,14 @@ export const services = [
     title: "Applied AI Integration",
     description: "Infusing applications with intelligent features using LangChain, LangGraph, and Gemini/GPT APIs. Building RAG systems, AI agents, and custom chatbots to automate complex workflows.",
     icon: Brain,
-    tags: ["LangChain", "LLMs", "Vector DBs", "AI Agents"]
+    tags: ["LangChain", "LangGraph", "LLMs", "Vector DBs", "AI Agents"]
   },
   {
     id: 5,
     title: "Cloud & DevOps Services",
     description: "Production-ready deployments using Docker, Kubernetes, and CI/CD pipelines. Expert in configuring NGINX, managing AWS/DigitalOcean infrastructure, and implementing automated workflows.",
     icon: Cloud,
-    tags: ["Docker", "K8s", "CI/CD", "AWS"]
+    tags: ["Docker", "K8s", "CI/CD", "AWS", "Nginx", "Digital Ocean"]
   },
   {
     id: 6,

@@ -268,7 +268,7 @@
       "id": 1,
       "company": "OrcaOps",
       "logo": "/orcaops-logo.webp",
-      "role": "Associate Software Engineer",
+      "role": "Software Engineer",
       "location": "Remote",
       "duration": "November 2025 - Present",
       "startDate": "Nov 2025",
@@ -410,6 +410,23 @@
     }
   ],
   "projects": [
+    {
+      "id": 0,
+      "title": "FairGig - Gig Worker Income & Rights Platform",
+      "description": "Microservices-based labour-rights platform with 6 independent services (Auth, Earnings, Grievance, Analytics, Anomaly, Certificate) supporting multiple user roles. Includes Groq LLaMA AI chatbot, bilingual (Urdu/English) voice-to-shift logging, anomaly detection via Z-score/IQR, city-wide median comparisons, advocate analytics dashboard, and printable income certificates for legal and financial use.",
+      "image": "/projects/fairgig.webp",
+      "tags": [
+        "React",
+        "FastAPI",
+        "Node.js",
+        "PostgreSQL",
+        "MongoDB",
+        "Groq AI",
+        "Microservices"
+      ],
+      "demoUrl": "https://github.com/sufyan2618/fairgig",
+      "githubUrl": "https://github.com/sufyan2618/fairgig"
+    },
     {
       "id": 1,
       "title": "Real Estate Property Analyzer",
